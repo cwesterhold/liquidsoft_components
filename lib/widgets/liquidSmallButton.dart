@@ -19,7 +19,7 @@ class LiquidSmallButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LiquidService _liquidService = LiquidService();
+    LiquidSoftService _liquidService = LiquidSoftService();
 
     return Padding(
       padding: const EdgeInsets.only(right: 8.0),

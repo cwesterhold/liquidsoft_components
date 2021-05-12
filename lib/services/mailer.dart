@@ -1,8 +1,8 @@
 import 'package:liquidsoft_components/dao.dart';
-import 'package:liquidsoft_components/services/httpCaller.dart';
+import 'package:liquidsoft_components/services/liquidHTTPCaller.dart';
 
 class Mailer {
-  HTTPCaller _httpCaller = HTTPCaller();
+  LiquidHTTPCaller _httpCaller = LiquidHTTPCaller();
 
   sendMail(String contactEmail, String contactName, String subject, String message) async {
     _httpCaller.postData(Dao.inst.apiBase + '/SendGrid/', {

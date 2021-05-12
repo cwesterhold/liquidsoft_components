@@ -10,7 +10,7 @@ class LiquidSpinner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LiquidService _liquidService = LiquidService();
+    LiquidSoftService _liquidService = LiquidSoftService();
 
     return Container(
       width: MediaQuery.of(context).size.width,

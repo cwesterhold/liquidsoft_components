@@ -3,6 +3,8 @@ library liquidsoft_components;
 import 'package:flutter/material.dart';
 import 'package:liquidsoft_components/dao.dart';
 
+export 'package:liquidsoft_components/services/liquidHTTPCaller.dart';
+
 ///export services and services
 export 'package:liquidsoft_components/services/liquidServices.dart';
 export 'package:liquidsoft_components/services/platformInfo.dart';

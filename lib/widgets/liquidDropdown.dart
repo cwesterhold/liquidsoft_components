@@ -37,7 +37,7 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
   var _isEdit;
   int _initValIndex = 0;
   final cupDropController = TextEditingController();
-  LiquidService _liquidService = LiquidService();
+  LiquidSoftService _liquidService = LiquidSoftService();
 
   @override
   void initState() {

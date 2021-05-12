@@ -36,7 +36,7 @@ class _LiquidApproveDialogState extends State<LiquidApproveDialog> {
 
   @override
   Widget build(BuildContext context) {
-    LiquidService _liquidService = LiquidService();
+    LiquidSoftService _liquidService = LiquidSoftService();
 
     return _SystemPadding(
       child: _liquidService.getPlatformType == PlatformType.iOS

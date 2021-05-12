@@ -4,7 +4,7 @@ import 'package:liquidsoft_components/services/platformInfo.dart';
 
 import '../dao.dart';
 
-class LiquidService {
+class LiquidSoftService {
   PlatformInfo _platformInfo = PlatformInfo();
 
   PlatformGroup get getPlatformGroup {

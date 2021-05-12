@@ -7,9 +7,9 @@ import 'package:liquidsoft_components/dao.dart';
 
 import 'liquidServices.dart';
 
-class HTTPCaller {
+class LiquidHTTPCaller {
   final Connectivity _connectivity = Connectivity();
-  LiquidService _liquidService = LiquidService();
+  LiquidSoftService _liquidService = LiquidSoftService();
 
   Future getNoTimeoutData(String url) async {
     Map<String, String> headers = {
