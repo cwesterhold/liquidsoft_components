@@ -1,0 +1,23 @@
+name: liquid_components
+description: A complete flutter component package for material and cupertino widgets
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^0.13.0
+  catcher:
+  connectivity_plus: ^1.0.0
+  package_info_plus: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+flutter:
