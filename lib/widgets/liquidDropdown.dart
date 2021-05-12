@@ -8,6 +8,7 @@ class LiquidDropdown extends StatefulWidget {
   final String labelText;
   final String initValue;
   final Function(dynamic)? onSaved;
+  final Function(dynamic)? onChanged;
   final double fieldWidth;
   final bool isEdit;
   final List<String> values;
@@ -19,6 +20,7 @@ class LiquidDropdown extends StatefulWidget {
       required this.fieldWidth,
       required this.values,
       this.onSaved,
+      this.onChanged,
       required this.isEdit});
 
   @override
@@ -29,10 +31,11 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
   var _dropVal;
   var _labelText;
   var _onSaved;
+  var _onChanged;
   var _fieldWidth;
-  late List<String> _values;
+  List<String> _values = [];
   var _isEdit;
-  late int _initValIndex;
+  int _initValIndex = 0;
   final cupDropController = TextEditingController();
   LiquidService _liquidService = LiquidService();
 
@@ -41,6 +44,7 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
     super.initState();
     _labelText = widget.labelText;
     _onSaved = widget.onSaved;
+    _onChanged = widget.onChanged;
     _fieldWidth = widget.fieldWidth;
     _values = widget.values;
     _isEdit = widget.isEdit;
@@ -50,14 +54,17 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
     }
 
     _dropVal = widget.initValue;
+
     cupDropController.text = _dropVal;
 
-    _initValIndex = _values.indexOf(_dropVal);
+    cupDropController.addListener(() {
+      _onChanged(cupDropController.text);
+    });
   }
 
-  List<DropdownMenuItem<String>> _getItems() {
+  List<DropdownMenuItem<dynamic>> _getItems() {
     var x = _values
-        .map<DropdownMenuItem<String>>(
+        .map<DropdownMenuItem<dynamic>>(
           (val) => DropdownMenuItem(
             value: val,
             child: Text(val),
@@ -90,9 +97,13 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
                   fontFamily: "Comfortaa",
                 ),
                 onSaved: _onSaved,
-                onChanged: _onSaved,
+                onChanged: _onChanged,
                 controller: cupDropController,
                 onTap: () async {
+                  setState(() {
+                    _initValIndex = _values.indexOf(_dropVal);
+                  });
+
                   var t = await showModalBottomSheet(
                     context: context,
                     builder: (context) {
@@ -148,19 +159,14 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
                       );
                     },
                   );
+
                   cupDropController.text = t;
+                  _dropVal = t;
                 },
               )
             : DropdownButtonFormField(
                 items: _getItems(),
-                onChanged: (newValue) {
-                  setState(
-                    () => {
-                      _dropVal = newValue,
-                      _onSaved,
-                    },
-                  );
-                },
+                onChanged: _onChanged,
                 onSaved: _onSaved,
                 value: _dropVal,
                 decoration: InputDecoration(

@@ -17,9 +17,7 @@ export 'package:liquid_components/widgets/liquidSpinner.dart';
 export 'package:liquid_components/widgets/liquidText.dart';
 export 'package:liquid_components/widgets/liquidToggleBar.dart';
 
-abstract class LiquidComponents {
-  LiquidComponents();
-
+class LiquidSoftComponents {
   /// this call is required to set up variables used in the services
   initState({
     required String authToken,
