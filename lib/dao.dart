@@ -6,7 +6,7 @@ class Dao {
 
   Map<String, String>? httpHeaders;
   late bool isDebug;
-  final int httpTimeout = 5;
+  late int httpTimeout;
   String httpErrorHeader = 'Application Error';
   String httpPreErrorMessage = 'There was an error connecting to our backend servers.';
   String httpPostErrorMessage = 'If this error persist, please contact support.';

@@ -44,7 +44,6 @@ class _ExampleAppState extends State<ExampleApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      navigatorKey: navKey,
       debugShowCheckedModeBanner: false,
       title: "LiquidSoft Component Example App",
       theme: light,

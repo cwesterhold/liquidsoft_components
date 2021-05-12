@@ -252,7 +252,7 @@ packages:
     description:
       path: "."
       ref: master
-      resolved-ref: "6d301ea1bf760a8d1c983e67da8b5e152217601b"
+      resolved-ref: "6c7b0dd2cf2950f73f56a53fd58cbc73f0e75452"
       url: "https://github.com/cwesterhold/liquidsoft_components"
     source: git
     version: "0.0.3"

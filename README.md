@@ -35,7 +35,6 @@ Includes the following;
     - requires context and Scaffold.of
 - Main App Bar
     - Create a Material AppBar or Cupertino Sliver AppBar
-    - 
 - Secondary App Bar
     - Creates a Material or Cupertino appbar
     - Allows for a trailing Widget
@@ -73,7 +72,68 @@ Please check out each widgets page for implementation details
 
 ## Getting Started
 
-All platforms must initialize the components once.
+Add liquidsoft_components to your pubspec.yaml
+
+```
+   dependencies:
+      liquidsoft_components: ^1.0.0
+
+```
+ 
+Import liquidsoft_components to main.dart file
+
+```
+import 'package:liquidsoft_components/liquid_components.dart';
+```
+
+
+Initialize liquidsoft_components
+
+```
+LiquidSoftComponents _liquidComponents = LiquidSoftComponents();
+
+/// This is the bare minimum initialization
+_liquidComponents.initState(
+    httpHeaders: {
+      "Authorization": "Your Auth Token",
+      "Access-Control-Allow-Origin": '*',
+      "content-type": "application/json",
+    },
+    isDebug: false);
+
+```
+
+All Initialization attributes
+    bool isDebug - drives the outcome of the http and other error handling
+    String logoLocationLight || String logoLocationDark - Logo Location for each theme type
+    Map<String, String> httpHeaders - Headers to be passed via http call
+    String httpErrorHeader - Dialog header for http errors
+    String httpPreErrorMessage - Dialog body text pre error code message
+    String httpPostErrorMessage - Dialog body text post error code message
+    String connectivityErrorHeader - Dialog header for connectivity errors
+    String connectivityErrorMessage - Dialog body text for connectivity errors
+ 
+ ## Documentation
+   - Check out the example project on our github site
+        -  https://github.com/cwesterhold/liquidsoft_components
+   - Each Widget/Service file has up to date documentation 
+   - Post issues to our github
+
+ ## Contributors Welcome
+    - Want to help out? You're more than welcome! 
+    - Fork the repo and send us a PR
+ 
+ ## Change Log
+ 
+ Check out the CHANGELOG.md file updates
+ 
+ ## Authors - LiquidSoft.io
+ * **Chris Westerhold** - *Initial work* - (https://github.com/cwesterhold)
+ 
+ 
+ ## License
+ 
+ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 
 

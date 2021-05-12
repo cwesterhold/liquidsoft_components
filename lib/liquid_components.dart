@@ -23,10 +23,11 @@ export 'package:liquidsoft_components/widgets/liquidToggleBar.dart';
 class LiquidSoftComponents {
   /// this call is required to set up variables used in the services
   initState({
-    required String logoLocationLight,
-    required String logoLocationDark,
     required bool isDebug,
+    String? logoLocationLight,
+    String? logoLocationDark,
     Map<String, String>? httpHeaders,
+    int httpTimeout = 5,
     String? httpErrorHeader,
     String? httpPreErrorMessage,
     String? httpPostErrorMessage,
@@ -35,6 +36,7 @@ class LiquidSoftComponents {
   }) {
     /// take all of the init variables and write them to the Dao singleton
     if (httpHeaders != null) Dao.inst.httpHeaders = httpHeaders;
+    Dao.inst.httpTimeout = httpTimeout;
     Dao.inst.isDebug = isDebug;
     if (httpErrorHeader != null) Dao.inst.httpErrorHeader = httpErrorHeader;
     if (httpPreErrorMessage != null) Dao.inst.httpPreErrorMessage = httpPreErrorMessage;
