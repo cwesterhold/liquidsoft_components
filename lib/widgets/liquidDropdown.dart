@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:liquid_components/services/liquidServices.dart';
-import 'package:liquid_components/services/platformInfo.dart';
+import 'package:liquidsoft_components/services/liquidServices.dart';
+import 'package:liquidsoft_components/services/platformInfo.dart';
 
 class LiquidDropdown extends StatefulWidget {
   final String fieldName;

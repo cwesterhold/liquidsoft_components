@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:liquid_components/services/liquidServices.dart';
-import 'package:liquid_components/services/platformInfo.dart';
+import 'package:liquidsoft_components/services/liquidServices.dart';
+import 'package:liquidsoft_components/services/platformInfo.dart';
 
 class LiquidButton extends StatelessWidget {
   final String name;

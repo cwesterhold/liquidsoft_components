@@ -1,21 +1,21 @@
-library liquid_components;
+library liquidsoft_components;
 
 import 'package:flutter/material.dart';
-import 'package:liquid_components/dao.dart';
+import 'package:liquidsoft_components/dao.dart';
 
 ///export services and services
-export 'package:liquid_components/services/liquidServices.dart';
-export 'package:liquid_components/widgets/liquidApproveDialog.dart';
-export 'package:liquid_components/widgets/liquidButton.dart';
-export 'package:liquid_components/widgets/liquidDate.dart';
-export 'package:liquid_components/widgets/liquidDropdown.dart';
-export 'package:liquid_components/widgets/liquidHeader.dart';
-export 'package:liquid_components/widgets/liquidLogo.dart';
-export 'package:liquid_components/widgets/liquidMultiText.dart';
-export 'package:liquid_components/widgets/liquidSmallButton.dart';
-export 'package:liquid_components/widgets/liquidSpinner.dart';
-export 'package:liquid_components/widgets/liquidText.dart';
-export 'package:liquid_components/widgets/liquidToggleBar.dart';
+export 'package:liquidsoft_components/services/liquidServices.dart';
+export 'package:liquidsoft_components/widgets/liquidApproveDialog.dart';
+export 'package:liquidsoft_components/widgets/liquidButton.dart';
+export 'package:liquidsoft_components/widgets/liquidDate.dart';
+export 'package:liquidsoft_components/widgets/liquidDropdown.dart';
+export 'package:liquidsoft_components/widgets/liquidHeader.dart';
+export 'package:liquidsoft_components/widgets/liquidLogo.dart';
+export 'package:liquidsoft_components/widgets/liquidMultiText.dart';
+export 'package:liquidsoft_components/widgets/liquidSmallButton.dart';
+export 'package:liquidsoft_components/widgets/liquidSpinner.dart';
+export 'package:liquidsoft_components/widgets/liquidText.dart';
+export 'package:liquidsoft_components/widgets/liquidToggleBar.dart';
 
 class LiquidSoftComponents {
   /// this call is required to set up variables used in the services

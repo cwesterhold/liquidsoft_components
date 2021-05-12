@@ -1,4 +1,4 @@
-# liquid_components
+# liquidsoft_components
 
 A complete component package for material and cupertino widgets
 

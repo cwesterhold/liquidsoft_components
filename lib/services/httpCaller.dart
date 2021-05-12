@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:http/http.dart' as http;
-import 'package:liquid_components/dao.dart';
+import 'package:liquidsoft_components/dao.dart';
 
 import 'liquidServices.dart';
 

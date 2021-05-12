@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:liquid_components/services/hexcolor.dart';
-import 'package:liquid_components/services/liquidServices.dart';
+import 'package:liquidsoft_components/services/hexcolor.dart';
+import 'package:liquidsoft_components/services/liquidServices.dart';
 
 class LiquidSmallButton extends StatelessWidget {
   final String name;

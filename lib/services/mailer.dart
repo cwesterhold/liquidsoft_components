@@ -1,5 +1,5 @@
-import 'package:liquid_components/dao.dart';
-import 'package:liquid_components/services/httpCaller.dart';
+import 'package:liquidsoft_components/dao.dart';
+import 'package:liquidsoft_components/services/httpCaller.dart';
 
 class Mailer {
   HTTPCaller _httpCaller = HTTPCaller();
