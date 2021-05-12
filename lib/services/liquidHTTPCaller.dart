@@ -12,14 +12,11 @@ class LiquidHTTPCaller {
   LiquidSoftService _liquidService = LiquidSoftService();
 
   Future getNoTimeoutData(String url) async {
-    Map<String, String> headers = {
-      "Authorization": Dao.inst.authToken,
-      "Access-Control-Allow-Origin": '*',
-      "accept": "application/json",
-      "content-type": "application/json",
-    };
+    http.Response response;
 
-    http.Response response = await http.get(Uri.parse(url), headers: headers);
+    Dao.inst.httpHeaders == null
+        ? response = await http.get(Uri.parse(url))
+        : response = await http.get(Uri.parse(url), headers: Dao.inst.httpHeaders);
 
     if (response.statusCode == 200) {
       String data = response.body;
@@ -37,16 +34,13 @@ class LiquidHTTPCaller {
   Future getData(String url) async {
     http.Response? response;
 
-    Map<String, String> headers = {
-      "Authorization": Dao.inst.authToken,
-      "Access-Control-Allow-Origin": '*',
-      "accept": "application/json",
-      "content-type": "application/json",
-    };
     try {
-      response = await http
-          .get(Uri.parse(url), headers: headers)
-          .timeout(Duration(seconds: Dao.inst.httpTimeout));
+      Dao.inst.httpHeaders == null
+          ? response =
+              await http.get(Uri.parse(url)).timeout(Duration(seconds: Dao.inst.httpTimeout))
+          : response = await http
+              .get(Uri.parse(url), headers: Dao.inst.httpHeaders)
+              .timeout(Duration(seconds: Dao.inst.httpTimeout));
 
       if (response.statusCode == 200) {
         return response.body;
@@ -73,16 +67,16 @@ class LiquidHTTPCaller {
   }
 
   Future postData(String url, dynamic json) async {
-    Map<String, String> headers = {
-      "Authorization": Dao.inst.authToken,
-      "accept": "application/json",
-      "content-type": "application/json",
-    };
+    http.Response response;
 
     try {
-      http.Response response = await http
-          .post(Uri.parse(url), headers: headers, body: jsonEncode(json))
-          .timeout(const Duration(seconds: 5));
+      Dao.inst.httpHeaders == null
+          ? response = await http
+              .post(Uri.parse(url), body: jsonEncode(json))
+              .timeout(Duration(seconds: Dao.inst.httpTimeout))
+          : response = await http
+              .post(Uri.parse(url), headers: Dao.inst.httpHeaders, body: jsonEncode(json))
+              .timeout(Duration(seconds: Dao.inst.httpTimeout));
 
       if (response.statusCode == 200) {
         return response.body;
@@ -109,16 +103,16 @@ class LiquidHTTPCaller {
   }
 
   Future patchData(String url, dynamic json) async {
-    Map<String, String> headers = {
-      "Authorization": Dao.inst.authToken,
-      "accept": "application/json",
-      "content-type": "application/json",
-    };
+    http.Response response;
 
     try {
-      http.Response response = await http
-          .patch(Uri.parse(url), headers: headers, body: jsonEncode(json))
-          .timeout(const Duration(seconds: 5));
+      Dao.inst.httpHeaders == null
+          ? response = await http
+              .patch(Uri.parse(url), body: jsonEncode(json))
+              .timeout(Duration(seconds: Dao.inst.httpTimeout))
+          : response = await http
+              .patch(Uri.parse(url), headers: Dao.inst.httpHeaders, body: jsonEncode(json))
+              .timeout(Duration(seconds: Dao.inst.httpTimeout));
 
       if (response.statusCode == 200) {
         return response.body;
@@ -145,11 +139,15 @@ class LiquidHTTPCaller {
   }
 
   Future deleteData(String url) async {
-    Map<String, String> headers = {"Authorization": "08022020-LiquidSoft"};
+    http.Response response;
 
     try {
-      http.Response response =
-          await http.delete(Uri.parse(url), headers: headers).timeout(const Duration(seconds: 5));
+      Dao.inst.httpHeaders == null
+          ? response =
+              await http.delete(Uri.parse(url)).timeout(Duration(seconds: Dao.inst.httpTimeout))
+          : response = await http
+              .delete(Uri.parse(url), headers: Dao.inst.httpHeaders)
+              .timeout(Duration(seconds: Dao.inst.httpTimeout));
 
       if (response.statusCode == 200) {
         return response.body;

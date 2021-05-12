@@ -6,7 +6,7 @@ class Dao {
   static final Dao _singleton = new Dao._internal();
   static get inst => _singleton;
 
-  late String authToken;
+  Map<String, String>? httpHeaders;
   late bool isDebug;
   late Key globalNavigatorKey;
   final int httpTimeout = 5;

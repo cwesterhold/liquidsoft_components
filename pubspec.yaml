@@ -1,7 +1,7 @@
 name: liquidsoft_components
-description: A complete flutter component package for material and cupertino widgets
-version: 0.0.2
-homepage:
+description: A complete flutter component package with Cupertino/Material Widget, HTTP Caller, Platform Identification, and much more.
+version: 0.0.3
+homepage: https://github.com/cwesterhold/liquidsoft_components
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

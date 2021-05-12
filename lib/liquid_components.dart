@@ -23,18 +23,20 @@ export 'package:liquidsoft_components/widgets/liquidToggleBar.dart';
 
 class LiquidSoftComponents {
   /// this call is required to set up variables used in the services
-  initState(
-      {required String authToken,
-      bool isDebug = false,
-      required Key globalNavigatorKey,
-      String? httpErrorHeader,
-      String? httpPreErrorMessage,
-      String? httpPostErrorMessage,
-      String? connectivityErrorHeader,
-      String? connectivityErrorMessage,
-      required String logoLocationLight,
-      required String logoLocationDark}) {
-    Dao.inst.authToken = authToken;
+  initState({
+    required String logoLocationLight,
+    required String logoLocationDark,
+    required bool isDebug,
+    required Key globalNavigatorKey,
+    Map<String, String>? httpHeaders,
+    String? httpErrorHeader,
+    String? httpPreErrorMessage,
+    String? httpPostErrorMessage,
+    String? connectivityErrorHeader,
+    String? connectivityErrorMessage,
+  }) {
+    /// take all of the init variables and write them to the Dao singleton
+    if (httpHeaders != null) Dao.inst.httpHeaders = httpHeaders;
     Dao.inst.isDebug = isDebug;
     Dao.inst.globalNavigatorKey = globalNavigatorKey;
     if (httpErrorHeader != null) Dao.inst.httpErrorHeader = httpErrorHeader;
@@ -45,5 +47,7 @@ class LiquidSoftComponents {
       Dao.inst.connectivityErrorMessage = connectivityErrorMessage;
     Dao.inst.logoLocationLight = logoLocationLight;
     Dao.inst.logoLocationDark = logoLocationDark;
+
+    print('LiquidSoft Components Init Successful');
   }
 }
