@@ -14,6 +14,7 @@ class LiquidText extends StatelessWidget {
   final Function()? onTap;
   final Icon? suffixIcon;
   final Icon? prefixIcon;
+  final FocusNode? focusNode;
 
   LiquidText(
       {required this.fieldName,
@@ -28,6 +29,7 @@ class LiquidText extends StatelessWidget {
       this.onTap,
       this.prefixIcon,
       this.suffixIcon,
+      this.focusNode,
       required this.isEdit});
 
   @override
@@ -49,6 +51,7 @@ class LiquidText extends StatelessWidget {
               borderRadius: BorderRadius.circular(15.0),
             ),
           ),
+          focusNode: focusNode,
           validator: validator,
           controller: controller,
           onSaved: onSaved,

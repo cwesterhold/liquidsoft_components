@@ -16,4 +16,6 @@ class Dao {
   String connectivityErrorHeader = 'Connectivity Error';
   String connectivityErrorMessage =
       'It appears that you are connected to a network with no connectivity to the internet.  Please check your connection an try again.';
+  late String logoLocationDark;
+  late String logoLocationLight;
 }

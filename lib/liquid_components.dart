@@ -3,6 +3,7 @@ library liquidsoft_components;
 import 'package:flutter/material.dart';
 import 'package:liquidsoft_components/dao.dart';
 
+export 'package:liquidsoft_components/services/hexcolor.dart';
 export 'package:liquidsoft_components/services/liquidHTTPCaller.dart';
 
 ///export services and services
@@ -22,16 +23,17 @@ export 'package:liquidsoft_components/widgets/liquidToggleBar.dart';
 
 class LiquidSoftComponents {
   /// this call is required to set up variables used in the services
-  initState({
-    required String authToken,
-    bool isDebug = false,
-    required Key globalNavigatorKey,
-    String? httpErrorHeader,
-    String? httpPreErrorMessage,
-    String? httpPostErrorMessage,
-    String? connectivityErrorHeader,
-    String? connectivityErrorMessage,
-  }) {
+  initState(
+      {required String authToken,
+      bool isDebug = false,
+      required Key globalNavigatorKey,
+      String? httpErrorHeader,
+      String? httpPreErrorMessage,
+      String? httpPostErrorMessage,
+      String? connectivityErrorHeader,
+      String? connectivityErrorMessage,
+      required String logoLocationLight,
+      required String logoLocationDark}) {
     Dao.inst.authToken = authToken;
     Dao.inst.isDebug = isDebug;
     Dao.inst.globalNavigatorKey = globalNavigatorKey;
@@ -41,5 +43,7 @@ class LiquidSoftComponents {
     if (connectivityErrorHeader != null) Dao.inst.connectivityErrorHeader = connectivityErrorHeader;
     if (connectivityErrorMessage != null)
       Dao.inst.connectivityErrorMessage = connectivityErrorMessage;
+    Dao.inst.logoLocationLight = logoLocationLight;
+    Dao.inst.logoLocationDark = logoLocationDark;
   }
 }

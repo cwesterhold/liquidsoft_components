@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-class LiquidLogo extends StatelessWidget {
-  final String assetLocationLight;
-  final String assetLocationDark;
+import '../dao.dart';
 
-  LiquidLogo({required this.assetLocationLight, required this.assetLocationDark});
+class LiquidLogo extends StatelessWidget {
+  LiquidLogo();
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +12,9 @@ class LiquidLogo extends StatelessWidget {
       child: ConstrainedBox(
         constraints: BoxConstraints(maxWidth: 230),
         child: Image.asset(
-          Theme.of(context).brightness == Brightness.light ? assetLocationLight : assetLocationDark,
+          Theme.of(context).brightness == Brightness.light
+              ? Dao.inst.logoLocationLight
+              : Dao.inst.logoLocationDark,
         ),
       ),
     );
