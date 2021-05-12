@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:liquidsoft_components/services/platformInfo.dart';
+import 'package:liquidsoft_components/widgets/liquidApproveDialog.dart';
 
 import '../dao.dart';
 
@@ -16,12 +18,12 @@ class LiquidSoftService {
   }
 
   throwHTTPError(String resStatusCode, String resBody) {
-    openDialog(Dao.inst.globalNavigatorKey, 1, Dao.inst.httpErrorHeader,
+    openDialog(Dao.inst.globalNavigatorKey, Dao.inst.httpErrorHeader,
         '${Dao.inst.httpPreErrorMessage}  \n\n Error Code - $resStatusCode \n\n Error - $resBody  \n\n{Dao.inst.httpPostErrorMessage}');
   }
 
   throwConnectivityError() {
-    openDialog(Dao.inst.globalNavigatorKey, 1, Dao.inst.connectivityErrorHeader,
+    openDialog(Dao.inst.globalNavigatorKey, Dao.inst.connectivityErrorHeader,
         Dao.inst.connectivityErrorMessage);
   }
 
@@ -57,7 +59,13 @@ class LiquidSoftService {
     return dollarString.toStringAsFixed(2).replaceAllMapped(reg, mathFunc);
   }
 
-  appBar(BuildContext context, String title, {Widget trailing = const Text('')}) {
+  String numberFormat(double numberString, {String format = "###.0#", String locale = 'en_US'}) {
+    var f = NumberFormat(format, locale);
+
+    return f.format(numberString);
+  }
+
+  secondaryAppBar(BuildContext context, String title, {Widget trailing = const Text('')}) {
     return getPlatformType == PlatformType.iOS
         ? CupertinoNavigationBar(
             leading: GestureDetector(
@@ -105,9 +113,24 @@ class LiquidSoftService {
           );
   }
 
-  openDialog(BuildContext context, int numPops, String title, String text) {
-    numPops == null ? numPops = 1 : numPops = numPops;
+  approvalDialog(BuildContext context, String title, String text, String approveButtonText,
+      String denyButtonText, Function successCallback) async {
+    final result = await showDialog(
+      context: context,
+      builder: (context) => LiquidApproveDialog(
+        title: title,
+        text: text,
+        approveText: approveButtonText,
+        denyText: denyButtonText,
+      ),
+    );
 
+    if (result == 'Approve') {
+      successCallback();
+    }
+  }
+
+  openDialog(BuildContext context, String title, String text, {int numPops = 1}) {
     if (getPlatformType == PlatformType.iOS) {
       showDialog(
         context: context,

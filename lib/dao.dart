@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Dao {
   // singleton boilerplate
   Dao._internal();
@@ -8,7 +6,6 @@ class Dao {
 
   Map<String, String>? httpHeaders;
   late bool isDebug;
-  late Key globalNavigatorKey;
   final int httpTimeout = 5;
   String httpErrorHeader = 'Application Error';
   String httpPreErrorMessage = 'There was an error connecting to our backend servers.';

@@ -1,6 +1,5 @@
 library liquidsoft_components;
 
-import 'package:flutter/material.dart';
 import 'package:liquidsoft_components/dao.dart';
 
 export 'package:liquidsoft_components/services/hexcolor.dart';
@@ -27,7 +26,6 @@ class LiquidSoftComponents {
     required String logoLocationLight,
     required String logoLocationDark,
     required bool isDebug,
-    required Key globalNavigatorKey,
     Map<String, String>? httpHeaders,
     String? httpErrorHeader,
     String? httpPreErrorMessage,
@@ -38,7 +36,6 @@ class LiquidSoftComponents {
     /// take all of the init variables and write them to the Dao singleton
     if (httpHeaders != null) Dao.inst.httpHeaders = httpHeaders;
     Dao.inst.isDebug = isDebug;
-    Dao.inst.globalNavigatorKey = globalNavigatorKey;
     if (httpErrorHeader != null) Dao.inst.httpErrorHeader = httpErrorHeader;
     if (httpPreErrorMessage != null) Dao.inst.httpPreErrorMessage = httpPreErrorMessage;
     if (httpPostErrorMessage != null) Dao.inst.httpPostErrorMessage = httpPostErrorMessage;
