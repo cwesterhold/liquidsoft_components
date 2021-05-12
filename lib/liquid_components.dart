@@ -5,6 +5,7 @@ import 'package:liquidsoft_components/dao.dart';
 
 ///export services and services
 export 'package:liquidsoft_components/services/liquidServices.dart';
+export 'package:liquidsoft_components/services/platformInfo.dart';
 export 'package:liquidsoft_components/widgets/liquidApproveDialog.dart';
 export 'package:liquidsoft_components/widgets/liquidButton.dart';
 export 'package:liquidsoft_components/widgets/liquidDate.dart';
