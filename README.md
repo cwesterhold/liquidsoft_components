@@ -1,5 +1,8 @@
 # liquidsoft_components
 
+---Currently in beta testing---
+---Please use with caution until we get to 1.0.0---
+
 A lightweight but complete component package to get your flutter project off the ground. 
 
 Works with: iOS, Android, Web, macOS and all other flutter platforms
@@ -33,8 +36,10 @@ Includes the following;
 - SnackBar
     - Easily call snackBar from anywhere in the app
     - requires context and Scaffold.of
-- Main App Bar
-    - Create a Material AppBar or Cupertino Sliver AppBar
+- Main Scaffold - In Development
+    - Create a Material or Cupertino App
+    - Material AppBar or Cupertino Sliver AppBar
+    - Material or Cupertino Bottom Nav Bar
 - Secondary App Bar
     - Creates a Material or Cupertino appbar
     - Allows for a trailing Widget
@@ -104,14 +109,14 @@ _liquidComponents.initState(
 ```
 
 All Initialization attributes
-    bool isDebug - drives the outcome of the http and other error handling
-    String logoLocationLight || String logoLocationDark - Logo Location for each theme type
-    Map<String, String> httpHeaders - Headers to be passed via http call
-    String httpErrorHeader - Dialog header for http errors
-    String httpPreErrorMessage - Dialog body text pre error code message
-    String httpPostErrorMessage - Dialog body text post error code message
-    String connectivityErrorHeader - Dialog header for connectivity errors
-    String connectivityErrorMessage - Dialog body text for connectivity errors
+    - bool isDebug - drives the outcome of the http and other error handling
+    - String logoLocationLight || String logoLocationDark - Logo Location for each theme type
+    - Map<String, String> httpHeaders - Headers to be passed via http call
+    - String httpErrorHeader - Dialog header for http errors
+    - String httpPreErrorMessage - Dialog body text pre error code message
+    - String httpPostErrorMessage - Dialog body text post error code message
+    - String connectivityErrorHeader - Dialog header for connectivity errors
+    - String connectivityErrorMessage - Dialog body text for connectivity errors
  
  ## Documentation
    - Check out the example project on our github site
@@ -120,11 +125,11 @@ All Initialization attributes
    - Post issues to our github
 
  ## Contributors Welcome
-    - Want to help out? You're more than welcome! 
-    - Fork the repo and send us a PR
+   - Want to help out? You're more than welcome! 
+   - Fork the repo and send us a PR
  
  ## Change Log
- 
+
  Check out the CHANGELOG.md file updates
  
  ## Authors - LiquidSoft.io

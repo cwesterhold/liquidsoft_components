@@ -114,7 +114,8 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
                           children: <Widget>[
                             Container(
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   CupertinoButton(
                                     child: Text('Cancel'),
@@ -141,8 +142,8 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
                                   backgroundColor: Colors.white,
                                   itemExtent: 40,
                                   looping: false,
-                                  scrollController:
-                                      FixedExtentScrollController(initialItem: _initValIndex),
+                                  scrollController: FixedExtentScrollController(
+                                      initialItem: _initValIndex),
                                   children: _values
                                       .map(
                                         (e) => Text(e),

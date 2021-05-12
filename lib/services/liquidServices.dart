@@ -65,54 +65,6 @@ class LiquidSoftService {
     return f.format(numberString);
   }
 
-  secondaryAppBar(BuildContext context, String title, {Widget trailing = const Text('')}) {
-    return getPlatformType == PlatformType.iOS
-        ? CupertinoNavigationBar(
-            leading: GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Icon(
-                Icons.arrow_back,
-                size: 25.0,
-                color: Theme.of(context).primaryColor,
-              ),
-            ),
-            automaticallyImplyLeading: false,
-            middle: Center(
-              child: Text(
-                title,
-                style: TextStyle(
-                  color: Theme.of(context).accentColor,
-                  fontSize: 18.0,
-                ),
-              ), //Text
-            ),
-            trailing: trailing)
-        : AppBar(
-            backgroundColor: Theme.of(context).canvasColor,
-            automaticallyImplyLeading: false,
-            leading: GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Icon(
-                Icons.arrow_back,
-                size: 25.0,
-                color: Theme.of(context).primaryColor,
-              ),
-            ),
-            title: Text(
-              title,
-              style: TextStyle(
-                color: Theme.of(context).accentColor,
-                fontSize: 18.0,
-              ),
-            ),
-            actions: [trailing],
-          );
-  }
-
   approvalDialog(BuildContext context, String title, String text, String approveButtonText,
       String denyButtonText, Function successCallback) async {
     final result = await showDialog(
