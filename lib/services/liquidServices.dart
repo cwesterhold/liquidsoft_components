@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:liquidsoft_components/services/platformInfo.dart';
 import 'package:liquidsoft_components/widgets/liquidApproveDialog.dart';
 
-import '../dao.dart';
+import '../models/dao.dart';
 
 class LiquidSoftService {
   PlatformInfo _platformInfo = PlatformInfo();
@@ -56,17 +56,23 @@ class LiquidSoftService {
     RegExp reg = new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))');
     String Function(Match) mathFunc = (Match match) => '${match[1]},';
 
-    return dollarString.toStringAsFixed(2).replaceAllMapped(reg, mathFunc);
+    return '\$${dollarString.toStringAsFixed(2).replaceAllMapped(reg, mathFunc)}';
   }
 
-  String numberFormat(double numberString, {String format = "###.0#", String locale = 'en_US'}) {
+  String numberFormat(double numberString,
+      {String format = "###.0#", String locale = 'en_US'}) {
     var f = NumberFormat(format, locale);
 
     return f.format(numberString);
   }
 
-  approvalDialog(BuildContext context, String title, String text, String approveButtonText,
-      String denyButtonText, Function successCallback) async {
+  approvalDialog(
+      BuildContext context,
+      String title,
+      String text,
+      String approveButtonText,
+      String denyButtonText,
+      Function successCallback) async {
     final result = await showDialog(
       context: context,
       builder: (context) => LiquidApproveDialog(
@@ -82,7 +88,8 @@ class LiquidSoftService {
     }
   }
 
-  openDialog(BuildContext context, String title, String text, {int numPops = 1}) {
+  openDialog(BuildContext context, String title, String text,
+      {int numPops = 1}) {
     if (getPlatformType == PlatformType.iOS) {
       showDialog(
         context: context,
@@ -112,7 +119,7 @@ class LiquidSoftService {
             ),
             actions: <Widget>[
               CupertinoDialogAction(
-                child: FlatButton(
+                child: TextButton(
                   child: Text("OK"),
                   onPressed: () {
                     int count = 0;
@@ -153,7 +160,7 @@ class LiquidSoftService {
               ],
             ),
             actions: [
-              FlatButton(
+              TextButton(
                 child: Text("OK"),
                 onPressed: () {
                   int count = 0;

@@ -2,14 +2,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:liquidsoft_components/liquid_components.dart';
 
-class LiquidSecondaryAppBar extends StatefulWidget {
+class LiquidSecondaryAppBar extends StatefulWidget
+    implements PreferredSizeWidget {
   final String title;
   final Widget trailing;
+  final Key? key;
+  final double height;
 
-  LiquidSecondaryAppBar({required this.title, this.trailing = const Text('')});
+  LiquidSecondaryAppBar(
+      {required this.title,
+      this.height = 56,
+      this.trailing = const Text(''),
+      this.key});
 
   @override
   _LiquidSecondaryAppBarState createState() => _LiquidSecondaryAppBarState();
+
+  @override
+  Size get preferredSize => Size.fromHeight(height);
 }
 
 class _LiquidSecondaryAppBarState extends State<LiquidSecondaryAppBar> {
@@ -19,6 +29,7 @@ class _LiquidSecondaryAppBarState extends State<LiquidSecondaryAppBar> {
   Widget build(BuildContext context) {
     return _liquidService.getPlatformType == PlatformType.iOS
         ? CupertinoNavigationBar(
+            key: widget.key,
             leading: GestureDetector(
               onTap: () {
                 Navigator.pop(context);
@@ -41,6 +52,7 @@ class _LiquidSecondaryAppBarState extends State<LiquidSecondaryAppBar> {
             ),
             trailing: widget.trailing)
         : AppBar(
+            key: widget.key,
             backgroundColor: Theme.of(context).canvasColor,
             automaticallyImplyLeading: false,
             leading: GestureDetector(

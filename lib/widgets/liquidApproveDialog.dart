@@ -8,12 +8,14 @@ class LiquidApproveDialog extends StatefulWidget {
   final String text;
   final String approveText;
   final String denyText;
+  final Key? key;
 
   LiquidApproveDialog(
       {required this.title,
       required this.text,
       this.approveText = 'Approve',
-      this.denyText = 'Deny'});
+      this.denyText = 'Deny',
+      this.key});
 
   @override
   _LiquidApproveDialogState createState() => _LiquidApproveDialogState();
@@ -41,6 +43,7 @@ class _LiquidApproveDialogState extends State<LiquidApproveDialog> {
     return _SystemPadding(
       child: _liquidService.getPlatformType == PlatformType.iOS
           ? CupertinoAlertDialog(
+              key: widget.key,
               title: Text(
                 _title,
                 style: TextStyle(
@@ -64,7 +67,7 @@ class _LiquidApproveDialogState extends State<LiquidApproveDialog> {
               ),
               actions: <Widget>[
                 CupertinoDialogAction(
-                  child: FlatButton(
+                  child: TextButton(
                     child: Text(_denyText),
                     onPressed: () {
                       Navigator.pop(context, 'Cancel');
@@ -72,7 +75,7 @@ class _LiquidApproveDialogState extends State<LiquidApproveDialog> {
                   ),
                 ),
                 CupertinoDialogAction(
-                  child: FlatButton(
+                  child: TextButton(
                     child: Text(_approveText),
                     onPressed: () {
                       Navigator.pop(context, 'Approve');
@@ -82,6 +85,7 @@ class _LiquidApproveDialogState extends State<LiquidApproveDialog> {
               ],
             )
           : AlertDialog(
+              key: widget.key,
               title: Text(
                 _title,
                 style: TextStyle(
@@ -104,13 +108,13 @@ class _LiquidApproveDialogState extends State<LiquidApproveDialog> {
                 ],
               ),
               actions: [
-                FlatButton(
+                TextButton(
                   child: Text(_denyText),
                   onPressed: () {
                     Navigator.pop(context, 'Cancel');
                   },
                 ),
-                FlatButton(
+                TextButton(
                   child: Text(_approveText),
                   onPressed: () {
                     Navigator.pop(context, 'Approve');

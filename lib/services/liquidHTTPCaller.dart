@@ -1,14 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:connectivity_plus/connectivity_plus.dart';
+//import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:http/http.dart' as http;
-import 'package:liquidsoft_components/dao.dart';
+import 'package:liquidsoft_components/models/dao.dart';
 
 import 'liquidServices.dart';
 
 class LiquidHTTPCaller {
-  final Connectivity _connectivity = Connectivity();
+  //final Connectivity _connectivity = Connectivity();
   LiquidSoftService _liquidService = LiquidSoftService();
 
   Future getNoTimeoutData(String url) async {
@@ -56,15 +56,6 @@ class LiquidHTTPCaller {
         return _liquidService.throwHTTPError(
             response.statusCode.toString(), response.body);
       }
-    } on TimeoutException catch (e) {
-      var connectivityResult = await _connectivity.checkConnectivity();
-
-      if (connectivityResult == ConnectivityResult.mobile ||
-          connectivityResult == ConnectivityResult.wifi) {
-        return _liquidService.throwConnectivityError();
-      } else {
-        return _liquidService.throwHTTPError('500', e.toString());
-      }
     } catch (e) {
       return _liquidService.throwHTTPError('500', e.toString());
     }
@@ -93,15 +84,6 @@ class LiquidHTTPCaller {
       } else if (response.statusCode != 200 && Dao.inst.isDebug == false) {
         return _liquidService.throwHTTPError(
             response.statusCode.toString(), response.body);
-      }
-    } on TimeoutException catch (e) {
-      var connectivityResult = await _connectivity.checkConnectivity();
-
-      if (connectivityResult == ConnectivityResult.mobile ||
-          connectivityResult == ConnectivityResult.wifi) {
-        return _liquidService.throwConnectivityError();
-      } else {
-        return _liquidService.throwHTTPError('500', e.toString());
       }
     } catch (e) {
       return _liquidService.throwHTTPError('500', e.toString());
@@ -132,15 +114,6 @@ class LiquidHTTPCaller {
         return _liquidService.throwHTTPError(
             response.statusCode.toString(), response.body);
       }
-    } on TimeoutException catch (e) {
-      var connectivityResult = await _connectivity.checkConnectivity();
-
-      if (connectivityResult == ConnectivityResult.mobile ||
-          connectivityResult == ConnectivityResult.wifi) {
-        return _liquidService.throwConnectivityError();
-      } else {
-        return _liquidService.throwHTTPError('500', e.toString());
-      }
     } catch (e) {
       return _liquidService.throwHTTPError('500', e.toString());
     }
@@ -168,15 +141,6 @@ class LiquidHTTPCaller {
       } else if (response.statusCode != 200 && Dao.inst.isDebug == false) {
         return _liquidService.throwHTTPError(
             response.statusCode.toString(), response.body);
-      }
-    } on TimeoutException catch (e) {
-      var connectivityResult = await _connectivity.checkConnectivity();
-
-      if (connectivityResult == ConnectivityResult.mobile ||
-          connectivityResult == ConnectivityResult.wifi) {
-        return _liquidService.throwConnectivityError();
-      } else {
-        return _liquidService.throwHTTPError('500', e.toString());
       }
     } catch (e) {
       return _liquidService.throwHTTPError('500', e.toString());

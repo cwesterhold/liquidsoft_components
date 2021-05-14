@@ -5,8 +5,9 @@ import 'package:liquidsoft_components/services/platformInfo.dart';
 
 class LiquidSpinner extends StatelessWidget {
   final String title;
+  final Key? key;
 
-  LiquidSpinner({required this.title});
+  LiquidSpinner({required this.title, this.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +29,12 @@ class LiquidSpinner extends StatelessWidget {
             ),
           ),
           _liquidService.getPlatformType == PlatformType.iOS
-              ? CupertinoActivityIndicator()
-              : CircularProgressIndicator(),
+              ? CupertinoActivityIndicator(
+                  key: key,
+                )
+              : CircularProgressIndicator(
+                  key: key,
+                ),
         ],
       ),
     );

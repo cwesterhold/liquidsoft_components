@@ -12,6 +12,7 @@ class LiquidDropdown extends StatefulWidget {
   final double fieldWidth;
   final bool isEdit;
   final List<String> values;
+  final Key? key;
 
   LiquidDropdown(
       {required this.fieldName,
@@ -21,7 +22,8 @@ class LiquidDropdown extends StatefulWidget {
       required this.values,
       this.onSaved,
       this.onChanged,
-      required this.isEdit});
+      required this.isEdit,
+      this.key});
 
   @override
   _LiquidDropdownState createState() => _LiquidDropdownState();
@@ -83,6 +85,7 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
         width: _fieldWidth,
         child: _liquidService.getPlatformType == PlatformType.iOS
             ? TextFormField(
+                key: widget.key,
                 enabled: _isEdit ? true : false,
                 readOnly: _isEdit ? false : true,
                 decoration: InputDecoration(
@@ -166,6 +169,7 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
                 },
               )
             : DropdownButtonFormField(
+                key: widget.key,
                 items: _getItems(),
                 onChanged: _onChanged,
                 onSaved: _onSaved,

@@ -250,11 +250,9 @@ packages:
   liquidsoft_components:
     dependency: "direct main"
     description:
-      path: "."
-      ref: master
-      resolved-ref: "6c7b0dd2cf2950f73f56a53fd58cbc73f0e75452"
-      url: "https://github.com/cwesterhold/liquidsoft_components"
-    source: git
+      name: liquidsoft_components
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "0.0.3"
   logging:
     dependency: transitive

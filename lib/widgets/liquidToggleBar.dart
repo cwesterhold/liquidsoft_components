@@ -16,6 +16,7 @@ class LiquidToggleBar extends StatefulWidget {
   final double borderRadius;
   final double height;
   final double fontSize;
+  final Key? key;
 
   LiquidToggleBar(
       {required this.tabsNames,
@@ -27,7 +28,8 @@ class LiquidToggleBar extends StatefulWidget {
       required this.onSelectionUpdated,
       this.borderRadius = 12,
       this.height = 30,
-      this.fontSize = 15});
+      this.fontSize = 15,
+      this.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -40,7 +42,6 @@ class _LiquidToggleBarState extends State<LiquidToggleBar> {
   int _selectedIndex = 0;
   PageController _controller =
       PageController(initialPage: 0, viewportFraction: .6);
-  bool _initAnimationOver = false;
 
   @override
   void initState() {
@@ -54,6 +55,7 @@ class _LiquidToggleBarState extends State<LiquidToggleBar> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
+      key: widget.key,
       builder: (context, constraints) {
         return Card(
           elevation: 6,

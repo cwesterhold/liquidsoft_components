@@ -12,6 +12,7 @@ class LiquidMultiText extends StatelessWidget {
   final int maxLines;
   final bool isEdit;
   final Function()? onTap;
+  final Key? key;
 
   LiquidMultiText(
       {required this.fieldName,
@@ -24,7 +25,8 @@ class LiquidMultiText extends StatelessWidget {
       this.onSaved,
       this.onChanged,
       this.onTap,
-      required this.isEdit});
+      required this.isEdit,
+      this.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,7 @@ class LiquidMultiText extends StatelessWidget {
       child: Container(
         width: fieldWidth,
         child: TextFormField(
+          key: key,
           enabled: isEdit ? true : false,
           readOnly: isEdit ? false : true,
           keyboardType: keyboardType,

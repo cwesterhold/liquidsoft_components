@@ -15,6 +15,7 @@ class LiquidText extends StatelessWidget {
   final Icon? suffixIcon;
   final Icon? prefixIcon;
   final FocusNode? focusNode;
+  final Key? key;
 
   LiquidText(
       {required this.fieldName,
@@ -30,7 +31,8 @@ class LiquidText extends StatelessWidget {
       this.prefixIcon,
       this.suffixIcon,
       this.focusNode,
-      required this.isEdit});
+      required this.isEdit,
+      this.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +42,7 @@ class LiquidText extends StatelessWidget {
         width: fieldWidth,
         height: fieldHeight,
         child: TextFormField(
+          key: key,
           enabled: isEdit ? true : false,
           readOnly: isEdit ? false : true,
           decoration: InputDecoration(

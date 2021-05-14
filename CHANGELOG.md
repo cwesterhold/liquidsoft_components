@@ -1,3 +1,21 @@
+## 0.0.7
+* Initial LiquidAppBar
+* Initial LiquidScaffold
+
+## 0.0.7
+* Add Key to all components
+* Improve Documentation
+
+## 0.0.6
+* Improve documentation
+* Fix issue with Secondary App Bar
+
+## 0.0.5
+* add universal_io
+    -Pub.dev was complaining about using dart.io
+
+## 0.0.4
+* Improve Documentation
 
 ## 0.0.3
 * Initial public release

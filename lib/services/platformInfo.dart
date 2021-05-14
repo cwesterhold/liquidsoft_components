@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:universal_io/io.dart';
 
 class PlatformInfo {
   PlatformGroup getPlatformGroup() {

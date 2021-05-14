@@ -15,6 +15,7 @@ class LiquidDate extends StatelessWidget {
   final int maxLines;
   final bool isEdit;
   final Function()? onTap;
+  final Key? key;
 
   LiquidDate(
       {required this.fieldName,
@@ -26,7 +27,8 @@ class LiquidDate extends StatelessWidget {
       required this.onSaved,
       required this.onChanged,
       this.onTap,
-      required this.isEdit});
+      required this.isEdit,
+      this.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +39,7 @@ class LiquidDate extends StatelessWidget {
       child: Container(
         width: fieldWidth,
         child: TextFormField(
+          key: key,
           enabled: isEdit ? true : false,
           readOnly: isEdit ? false : true,
           decoration: InputDecoration(

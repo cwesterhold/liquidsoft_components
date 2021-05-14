@@ -10,10 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  liquidsoft_components:
-    git:
-      url: https://github.com/cwesterhold/liquidsoft_components
-      ref: master
+  liquidsoft_components: ^0.0.3
+
 
 dev_dependencies:
   flutter_test:

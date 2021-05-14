@@ -1,6 +1,6 @@
 name: liquidsoft_components
-description: A complete flutter component package with Cupertino/Material Widget, HTTP Caller, Platform Identification, and much more.
-version: 0.0.3
+description: A lightweight but complete flutter component package with Cupertino/Material Widgets, HTTP Caller, Platform Identification, and much more.
+version: 0.0.7
 homepage: https://github.com/cwesterhold/liquidsoft_components
 
 environment:
@@ -11,10 +11,9 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.0
-  catcher: ^0.6.5
-  connectivity_plus: ^1.0.0
-  package_info_plus: ^1.0.0
   intl: ^0.17.0
+  universal_io: ^2.0.4
+  floating_action_bubble: ^1.1.2
 
 dev_dependencies:
   flutter_test:

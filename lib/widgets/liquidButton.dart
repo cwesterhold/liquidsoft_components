@@ -11,6 +11,7 @@ class LiquidButton extends StatelessWidget {
   final double fontSize;
   final Function() onPressed;
   final Color backgroundColor;
+  final Key? key;
 
   LiquidButton(
       {required this.name,
@@ -18,7 +19,8 @@ class LiquidButton extends StatelessWidget {
       this.width = 88,
       this.height = 36,
       required this.onPressed,
-      this.backgroundColor = Colors.blueAccent});
+      this.backgroundColor = Colors.blueAccent,
+      this.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,7 @@ class LiquidButton extends StatelessWidget {
 
     return _liquidService.getPlatformType == PlatformType.iOS
         ? CupertinoButton(
+            key: key,
             onPressed: onPressed,
             minSize: width / 2,
             color: backgroundColor,
@@ -33,7 +36,7 @@ class LiquidButton extends StatelessWidget {
               name,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: fontSize == null ? 19.0 : fontSize,
+                fontSize: fontSize,
                 fontFamily: 'Comfortaa',
               ),
             ),
@@ -44,6 +47,7 @@ class LiquidButton extends StatelessWidget {
               minWidth: width,
               height: height,
               child: TextButton(
+                key: key,
                 onPressed: onPressed,
                 style: ButtonStyle(
                   backgroundColor: backgroundColor == Colors.blueAccent

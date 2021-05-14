@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:liquidsoft_components/liquid_components.dart';
 
 class LiquidScaffold extends StatefulWidget {
-  final String title;
-  final Widget trailing;
+  final Key? key;
+  final List<NavBarItems> screens;
 
-  LiquidScaffold({required this.title, this.trailing = const Text('')});
+  LiquidScaffold({
+    this.key,
+    required this.screens,
+  });
 
   @override
   _LiquidScaffoldState createState() => _LiquidScaffoldState();
@@ -14,53 +17,68 @@ class LiquidScaffold extends StatefulWidget {
 
 class _LiquidScaffoldState extends State<LiquidScaffold> {
   LiquidSoftService _liquidService = LiquidSoftService();
+  int _currentTabIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return _liquidService.getPlatformType == PlatformType.iOS
-        ? CupertinoNavigationBar(
-            leading: GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Icon(
-                Icons.arrow_back,
-                size: 25.0,
-                color: Theme.of(context).primaryColor,
-              ),
+        ? CupertinoTabScaffold(
+            key: widget.key,
+            tabBar: CupertinoTabBar(
+              activeColor: Theme.of(context).accentColor,
+              inactiveColor: Theme.of(context).primaryColorLight,
+              items: widget.screens[_currentTabIndex].actions
+                  .map(
+                    (e) => BottomNavigationBarItem(
+                      icon: Icon(
+                        e.buttonIcon,
+                        color: Theme.of(context).accentColor,
+                      ),
+                      label: e.title,
+                    ),
+                  )
+                  .toList(),
             ),
-            automaticallyImplyLeading: false,
-            middle: Center(
-              child: Text(
-                widget.title,
-                style: TextStyle(
-                  color: Theme.of(context).accentColor,
-                  fontSize: 18.0,
-                ),
-              ), //Text
+            tabBuilder: (BuildContext context, int index) {
+              return CupertinoTabView(
+                builder: (BuildContext context) => widget.screens[_currentTabIndex].screen,
+              );
+            },
+          )
+        : Scaffold(
+            body: SafeArea(
+              top: false,
+              child: LiquidAppBar(
+                  key: widget.key,
+                  title: widget.screens[_currentTabIndex].title,
+                  screen: widget.screens[_currentTabIndex].screen,
+                  appBarTrailing: widget.screens[_currentTabIndex].appBarTrailing,
+                  actions: widget.screens[_currentTabIndex].actions),
             ),
-            trailing: widget.trailing)
-        : AppBar(
-            backgroundColor: Theme.of(context).canvasColor,
-            automaticallyImplyLeading: false,
-            leading: GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Icon(
-                Icons.arrow_back,
-                size: 25.0,
-                color: Theme.of(context).primaryColor,
-              ),
+            bottomNavigationBar: BottomNavigationBar(
+              selectedItemColor: Theme.of(context).accentColor,
+              unselectedItemColor: Theme.of(context).primaryColorLight,
+              elevation: 16,
+              onTap: (val) {
+                setState(
+                  () {
+                    _currentTabIndex = val;
+                  },
+                );
+              }, // new
+              currentIndex: _currentTabIndex, // new
+              items: widget.screens[_currentTabIndex].actions
+                  .map(
+                    (e) => BottomNavigationBarItem(
+                      icon: Icon(
+                        e.buttonIcon,
+                        color: Theme.of(context).accentColor,
+                      ),
+                      label: e.title,
+                    ),
+                  )
+                  .toList(),
             ),
-            title: Text(
-              widget.title,
-              style: TextStyle(
-                color: Theme.of(context).accentColor,
-                fontSize: 18.0,
-              ),
-            ),
-            actions: [widget.trailing],
           );
   }
 }

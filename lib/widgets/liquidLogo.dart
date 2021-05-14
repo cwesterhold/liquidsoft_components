@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:liquidsoft_components/liquid_components.dart';
 
-import '../dao.dart';
+import '../models/dao.dart';
 
-class LiquidLogo extends StatelessWidget {
-  LiquidLogo();
+class LiquidLogo extends StatefulWidget {
+  @override
+  _LiquidLogoState createState() => _LiquidLogoState();
+}
+
+class _LiquidLogoState extends State<LiquidLogo> {
   LiquidSoftService _liquidService = LiquidSoftService();
 
   @override

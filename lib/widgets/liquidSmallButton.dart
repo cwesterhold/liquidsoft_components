@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:liquidsoft_components/services/hexcolor.dart';
-import 'package:liquidsoft_components/services/liquidServices.dart';
 
 class LiquidSmallButton extends StatelessWidget {
   final String name;
@@ -9,25 +8,27 @@ class LiquidSmallButton extends StatelessWidget {
   final double height;
   final double fontSize;
   final Function() onPressed;
+  final Key? key;
 
   LiquidSmallButton(
       {required this.name,
       this.fontSize = 19.0,
       this.width = 88.0,
       this.height = 36.0,
-      required this.onPressed});
+      required this.onPressed,
+      this.key});
 
   @override
   Widget build(BuildContext context) {
-    LiquidSoftService _liquidService = LiquidSoftService();
-
     return Padding(
       padding: const EdgeInsets.only(right: 8.0),
-      child: RaisedButton(
-        color: HexColor("#E4E5E8"),
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12.0),
-            side: BorderSide(color: HexColor('#D9965B'))),
+      child: ElevatedButton(
+        key: key,
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(HexColor("#E4E5E8")),
+          side:
+              MaterialStateProperty.all(BorderSide(color: HexColor('#D9965B'))),
+        ),
         onPressed: onPressed,
         child: Text(
           name,
