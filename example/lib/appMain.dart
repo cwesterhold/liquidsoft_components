@@ -35,8 +35,8 @@ class _AppMainScreenState extends State<AppMainScreen> {
             size: 30,
           ),
           onTap: () {
-            _liquidSoftService.openDialog(
-                context, 'Liquid Dialog', 'This opened a dialog based on the platform');
+            _liquidSoftService.openDialog(context, 'Liquid Dialog',
+                'This opened a dialog based on the platform');
           },
         ),
         actions: [
@@ -44,7 +44,8 @@ class _AppMainScreenState extends State<AppMainScreen> {
             title: 'New Something',
             buttonIcon: Icons.title,
             callBack: () {
-              _liquidSoftService.showSnackBar(context, 'This is a liquid snackbar');
+              _liquidSoftService.showSnackBar(
+                  context, 'This is a liquid snackbar');
             },
           ),
         ],
@@ -63,8 +64,8 @@ class _AppMainScreenState extends State<AppMainScreen> {
             size: 30,
           ),
           onTap: () {
-            _liquidSoftService.openDialog(
-                context, 'Liquid Dialog', 'This opened a dialog based on the platform');
+            _liquidSoftService.openDialog(context, 'Liquid Dialog',
+                'This opened a dialog based on the platform');
           },
         ),
         actions: [
@@ -72,7 +73,8 @@ class _AppMainScreenState extends State<AppMainScreen> {
             title: 'New Other Thing',
             buttonIcon: Icons.title,
             callBack: () {
-              _liquidSoftService.showSnackBar(context, 'This is a liquid snackbar');
+              _liquidSoftService.showSnackBar(
+                  context, 'This is a liquid snackbar');
             },
           ),
         ],
@@ -91,8 +93,8 @@ class _AppMainScreenState extends State<AppMainScreen> {
             size: 30,
           ),
           onTap: () {
-            _liquidSoftService.openDialog(
-                context, 'Liquid Dialog', 'This opened a dialog based on the platform');
+            _liquidSoftService.openDialog(context, 'Liquid Dialog',
+                'This opened a dialog based on the platform');
           },
         ),
         actions: [
@@ -100,7 +102,8 @@ class _AppMainScreenState extends State<AppMainScreen> {
             title: 'New Other Thing',
             buttonIcon: Icons.title,
             callBack: () {
-              _liquidSoftService.showSnackBar(context, 'This is a liquid snackBar');
+              _liquidSoftService.showSnackBar(
+                  context, 'This is a liquid snackBar');
             },
           ),
         ],

@@ -123,16 +123,19 @@ class LiquidDate extends StatelessWidget {
                   );
                 },
               );
-              if (date != null) controller.text = DateFormat('yyyy-MM-dd').format(date);
+              if (date != null)
+                controller.text = DateFormat('yyyy-MM-dd').format(date);
             } else {
               date = await showDatePicker(
                 context: context,
-                initialDate:
-                    controller.text == '' ? DateTime.now() : DateTime.parse(controller.text),
+                initialDate: controller.text == ''
+                    ? DateTime.now()
+                    : DateTime.parse(controller.text),
                 firstDate: date,
                 lastDate: DateTime(2100),
               );
-              if (date != null) controller.text = DateFormat('yyyy-MM-dd').format(date);
+              if (date != null)
+                controller.text = DateFormat('yyyy-MM-dd').format(date);
             }
           },
         ),

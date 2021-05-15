@@ -19,14 +19,16 @@ class _ServicesScreenState extends State<ServicesScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 18.0),
-            child: Text('Here are examples of all of the widgets in the library'),
+            child:
+                Text('Here are examples of all of the widgets in the library'),
           ),
           Divider(),
           LiquidHeader(labelText: 'Liquid Errors'),
           LiquidSmallButton(
             name: 'HTTP Error',
             onPressed: () {
-              _liquidSoftService.throwHTTPError('500', 'something didnt go right...');
+              _liquidSoftService.throwHTTPError(
+                  '500', 'something didnt go right...');
             },
           ),
           LiquidSmallButton(
@@ -52,7 +54,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
           LiquidSmallButton(
             name: 'Open SnackBar',
             onPressed: () {
-              _liquidSoftService.showSnackBar(context, 'This is a liquid snackbar');
+              _liquidSoftService.showSnackBar(
+                  context, 'This is a liquid snackbar');
             },
           ),
           LiquidHeader(labelText: 'Liquid Dollar Formatting'),
@@ -83,8 +86,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
             child: LiquidSmallButton(
               name: 'Open Dialog',
               onPressed: () {
-                _liquidSoftService.openDialog(
-                    context, 'Liquid Dialog', 'This opened a dialog based on the platform');
+                _liquidSoftService.openDialog(context, 'Liquid Dialog',
+                    'This opened a dialog based on the platform');
               },
             ),
           )

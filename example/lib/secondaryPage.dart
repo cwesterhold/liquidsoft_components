@@ -43,7 +43,8 @@ class _SecondaryPageState extends State<SecondaryPage> {
               Text(
                   ' This is a secondary page.  Use the LiquidSecondaryAppBar widget to get the appbar above.'),
               Divider(),
-              Text('Click on the delete icon in the appBar to get an approval dialog')
+              Text(
+                  'Click on the delete icon in the appBar to get an approval dialog')
             ],
           ),
         ),

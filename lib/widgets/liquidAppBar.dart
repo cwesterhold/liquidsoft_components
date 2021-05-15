@@ -35,7 +35,8 @@ class LiquidAppBar extends StatefulWidget {
   _LiquidAppBarState createState() => _LiquidAppBarState();
 }
 
-class _LiquidAppBarState extends State<LiquidAppBar> with SingleTickerProviderStateMixin {
+class _LiquidAppBarState extends State<LiquidAppBar>
+    with SingleTickerProviderStateMixin {
   LiquidSoftService _liquidService = LiquidSoftService();
   late Animation<double> _animation;
   late AnimationController _animationController;
@@ -48,7 +49,8 @@ class _LiquidAppBarState extends State<LiquidAppBar> with SingleTickerProviderSt
       duration: Duration(seconds: 1),
     );
 
-    final curvedAnimation = CurvedAnimation(curve: Curves.easeInOut, parent: _animationController);
+    final curvedAnimation =
+        CurvedAnimation(curve: Curves.easeInOut, parent: _animationController);
     _animation = Tween<double>(begin: 0, end: 1).animate(curvedAnimation);
 
     super.initState();
@@ -77,7 +79,8 @@ class _LiquidAppBarState extends State<LiquidAppBar> with SingleTickerProviderSt
                           onTap: () async {
                             return showCupertinoModalPopup(
                               context: context,
-                              builder: (BuildContext context) => CupertinoActionSheet(
+                              builder: (BuildContext context) =>
+                                  CupertinoActionSheet(
                                 title: Text('${widget.title} Actions'),
                                 actions: widget.actions!
                                     .map((e) => CupertinoActionSheetAction(
@@ -137,7 +140,8 @@ class _LiquidAppBarState extends State<LiquidAppBar> with SingleTickerProviderSt
                           iconColor: Colors.white,
                           bubbleColor: Theme.of(context).accentColor,
                           icon: e.buttonIcon,
-                          titleStyle: TextStyle(fontSize: 16, color: Colors.white),
+                          titleStyle:
+                              TextStyle(fontSize: 16, color: Colors.white),
                           onPress: e.callBack,
                         ),
                       )

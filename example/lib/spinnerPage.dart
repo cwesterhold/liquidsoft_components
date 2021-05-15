@@ -9,8 +9,6 @@ class SpinnerPage extends StatefulWidget {
 }
 
 class _SpinnerPageState extends State<SpinnerPage> {
-  LiquidSoftService _liquidSoftService = LiquidSoftService();
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(

@@ -11,7 +11,8 @@ class Dao {
   late Key globalNavigatorKey;
   int httpTimeout = 5;
   String httpErrorHeader = 'Application Error';
-  String httpPreErrorMessage = 'There was an error connecting to our backend servers.';
+  String httpPreErrorMessage =
+      'There was an error connecting to our backend servers.';
   String httpPostErrorMessage =
       'We have sent a report to the development team.  If this error persist, please contact support.';
   String generalErrorHeader = 'Application Error';
