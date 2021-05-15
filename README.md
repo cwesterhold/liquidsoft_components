@@ -86,6 +86,11 @@ Includes the following;
 - Toggle Bar
     - Horizontal tab interface capable of handing any number of inputs. 
     - Easily customize colors with an easy to use set of attributes.
+- Switch - Coming soon
+    - Cupertino or Material Switch
+    - customize colors and size
+- Search Bar - Coming Soon
+    
 
 Please check out each widgets page for implementation details
 
@@ -350,7 +355,7 @@ All Initialization attributes
  
  ## License
  
- This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 
 

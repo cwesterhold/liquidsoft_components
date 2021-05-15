@@ -64,9 +64,12 @@ class LiquidSoftComponents {
     Dao.inst.httpTimeout = httpTimeout;
     Dao.inst.isDebug = isDebug;
     if (httpErrorHeader != null) Dao.inst.httpErrorHeader = httpErrorHeader;
-    if (httpPreErrorMessage != null) Dao.inst.httpPreErrorMessage = httpPreErrorMessage;
-    if (httpPostErrorMessage != null) Dao.inst.httpPostErrorMessage = httpPostErrorMessage;
-    if (connectivityErrorHeader != null) Dao.inst.connectivityErrorHeader = connectivityErrorHeader;
+    if (httpPreErrorMessage != null)
+      Dao.inst.httpPreErrorMessage = httpPreErrorMessage;
+    if (httpPostErrorMessage != null)
+      Dao.inst.httpPostErrorMessage = httpPostErrorMessage;
+    if (connectivityErrorHeader != null)
+      Dao.inst.connectivityErrorHeader = connectivityErrorHeader;
     if (connectivityErrorMessage != null)
       Dao.inst.connectivityErrorMessage = connectivityErrorMessage;
     Dao.inst.logoLocationLight = logoLocationLight;

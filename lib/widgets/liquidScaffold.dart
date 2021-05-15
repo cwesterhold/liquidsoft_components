@@ -41,7 +41,8 @@ class _LiquidScaffoldState extends State<LiquidScaffold> {
             ),
             tabBuilder: (BuildContext context, int index) {
               return CupertinoTabView(
-                builder: (BuildContext context) => widget.screens[_currentTabIndex].screen,
+                builder: (BuildContext context) =>
+                    widget.screens[_currentTabIndex].screen,
               );
             },
           )
@@ -52,7 +53,8 @@ class _LiquidScaffoldState extends State<LiquidScaffold> {
                   key: widget.key,
                   title: widget.screens[_currentTabIndex].title,
                   screen: widget.screens[_currentTabIndex].screen,
-                  appBarTrailing: widget.screens[_currentTabIndex].appBarTrailing,
+                  appBarTrailing:
+                      widget.screens[_currentTabIndex].appBarTrailing,
                   actions: widget.screens[_currentTabIndex].actions),
             ),
             bottomNavigationBar: BottomNavigationBar(
