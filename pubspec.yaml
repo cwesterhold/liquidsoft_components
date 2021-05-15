@@ -1,6 +1,6 @@
 name: liquidsoft_components
 description: A lightweight but complete flutter component package with Cupertino/Material Widgets, HTTP Caller, Platform Identification, and much more.
-version: 0.0.8
+version: 0.1.0
 homepage: https://github.com/cwesterhold/liquidsoft_components
 
 environment:
@@ -12,13 +12,9 @@ dependencies:
     sdk: flutter
   http: ^0.13.0
   catcher: ^0.6.5
-  connectivity_plus: ^1.0.0
+  connectivity: ^3.0.3
   intl: ^0.17.0
   universal_io: ^2.0.4
-  floating_action_bubble:
-    git:
-      url: https://github.com/cwesterhold/FloatingActionBubble
-      ref: master
 
 dev_dependencies:
   flutter_test:

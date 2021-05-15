@@ -8,8 +8,10 @@ class Dao {
   late bool isDebug;
   late int httpTimeout;
   String httpErrorHeader = 'Application Error';
-  String httpPreErrorMessage = 'There was an error connecting to our backend servers.';
-  String httpPostErrorMessage = 'If this error persist, please contact support.';
+  String httpPreErrorMessage =
+      'There was an error connecting to our backend servers.';
+  String httpPostErrorMessage =
+      'If this error persist, please contact support.';
   String connectivityErrorHeader = 'Connectivity Error';
   String connectivityErrorMessage =
       'It appears that you are connected to a network with no connectivity to the internet.  Please check your connection an try again.';

@@ -137,6 +137,7 @@ class _SystemPadding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new AnimatedContainer(duration: const Duration(milliseconds: 200), child: child);
+    return new AnimatedContainer(
+        duration: const Duration(milliseconds: 200), child: child);
   }
 }

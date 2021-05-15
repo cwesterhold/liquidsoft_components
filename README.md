@@ -169,6 +169,7 @@ All Initialization attributes
     - Dialog body text for connectivity errors
  
  ## Documentation
+   - You can find a complete set of documentation 
    - Check out the example project on our github site
         -  https://github.com/cwesterhold/liquidsoft_components
  

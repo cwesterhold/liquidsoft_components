@@ -67,7 +67,8 @@ class LiquidButton extends StatelessWidget {
                 onPressed: onPressed,
                 style: ButtonStyle(
                   backgroundColor: backgroundColor == Colors.blueAccent
-                      ? MaterialStateProperty.all<Color>(Theme.of(context).accentColor)
+                      ? MaterialStateProperty.all<Color>(
+                          Theme.of(context).accentColor)
                       : MaterialStateProperty.all<Color>(backgroundColor),
                 ),
                 child: Padding(

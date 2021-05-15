@@ -21,7 +21,8 @@ import 'package:liquidsoft_components/liquid_components.dart';
 ///               ),
 ///               body: Container()
 
-class LiquidSecondaryAppBar extends StatefulWidget implements PreferredSizeWidget {
+class LiquidSecondaryAppBar extends StatefulWidget
+    implements PreferredSizeWidget {
   /// Title to show in the center of the appBar
   final String title;
 
@@ -35,7 +36,10 @@ class LiquidSecondaryAppBar extends StatefulWidget implements PreferredSizeWidge
   final double height;
 
   LiquidSecondaryAppBar(
-      {required this.title, this.height = 56, this.trailing = const Text(''), this.key});
+      {required this.title,
+      this.height = 56,
+      this.trailing = const Text(''),
+      this.key});
 
   @override
   _LiquidSecondaryAppBarState createState() => _LiquidSecondaryAppBarState();

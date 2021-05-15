@@ -45,7 +45,8 @@ class _LiquidScaffoldState extends State<LiquidScaffold> {
             ),
             tabBuilder: (BuildContext context, int index) {
               return CupertinoTabView(
-                builder: (BuildContext context) => widget.items[_currentTabIndex].screen,
+                builder: (BuildContext context) =>
+                    widget.items[_currentTabIndex].screen,
               );
             },
           )
