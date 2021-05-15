@@ -3,15 +3,35 @@ import 'package:flutter/material.dart';
 import 'package:liquidsoft_components/services/liquidServices.dart';
 import 'package:liquidsoft_components/services/platformInfo.dart';
 
+/// Returns a Material Dropdown or a Cupertino picker wheel based on platform
+
 class LiquidDropdown extends StatefulWidget {
+  /// unique field name
   final String fieldName;
+
+  /// label text for textfield
   final String labelText;
+
+  /// initial dropdown value
   final String initValue;
+
+  /// on saved function
   final Function(dynamic)? onSaved;
+
+  /// onChanged function
   final Function(dynamic)? onChanged;
+
+  /// width of the textfield
   final double fieldWidth;
+
+  /// is the field editable
   final bool isEdit;
+
+  /// list of the dropdown boxes
+  /// [apples,oranges,pears]
   final List<String> values;
+
+  /// optional key
   final Key? key;
 
   LiquidDropdown(
@@ -117,8 +137,7 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
                           children: <Widget>[
                             Container(
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   CupertinoButton(
                                     child: Text('Cancel'),
@@ -145,8 +164,8 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
                                   backgroundColor: Colors.white,
                                   itemExtent: 40,
                                   looping: false,
-                                  scrollController: FixedExtentScrollController(
-                                      initialItem: _initValIndex),
+                                  scrollController:
+                                      FixedExtentScrollController(initialItem: _initValIndex),
                                   children: _values
                                       .map(
                                         (e) => Text(e),

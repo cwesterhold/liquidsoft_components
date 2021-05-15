@@ -1,14 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
 
-//import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:http/http.dart' as http;
 import 'package:liquidsoft_components/models/dao.dart';
 
 import 'liquidServices.dart';
 
 class LiquidHTTPCaller {
-  //final Connectivity _connectivity = Connectivity();
+  final Connectivity _connectivity = Connectivity();
   LiquidSoftService _liquidService = LiquidSoftService();
 
   Future getNoTimeoutData(String url) async {
@@ -16,8 +16,7 @@ class LiquidHTTPCaller {
 
     Dao.inst.httpHeaders == null
         ? response = await http.get(Uri.parse(url))
-        : response =
-            await http.get(Uri.parse(url), headers: Dao.inst.httpHeaders);
+        : response = await http.get(Uri.parse(url), headers: Dao.inst.httpHeaders);
 
     if (response.statusCode == 200) {
       String data = response.body;
@@ -28,8 +27,7 @@ class LiquidHTTPCaller {
           "...." +
           response.body);
     } else if (response.statusCode != 200 && Dao.inst.isDebug == false) {
-      _liquidService.throwHTTPError(
-          response.statusCode.toString(), response.body);
+      _liquidService.throwHTTPError(response.statusCode.toString(), response.body);
     }
   }
 
@@ -38,9 +36,8 @@ class LiquidHTTPCaller {
 
     try {
       Dao.inst.httpHeaders == null
-          ? response = await http
-              .get(Uri.parse(url))
-              .timeout(Duration(seconds: Dao.inst.httpTimeout))
+          ? response =
+              await http.get(Uri.parse(url)).timeout(Duration(seconds: Dao.inst.httpTimeout))
           : response = await http
               .get(Uri.parse(url), headers: Dao.inst.httpHeaders)
               .timeout(Duration(seconds: Dao.inst.httpTimeout));
@@ -53,8 +50,16 @@ class LiquidHTTPCaller {
             "...." +
             response.body);
       } else if (response.statusCode != 200 && Dao.inst.isDebug == false) {
-        return _liquidService.throwHTTPError(
-            response.statusCode.toString(), response.body);
+        return _liquidService.throwHTTPError(response.statusCode.toString(), response.body);
+      }
+    } on TimeoutException catch (e) {
+      var connectivityResult = await _connectivity.checkConnectivity();
+
+      if (connectivityResult == ConnectivityResult.mobile ||
+          connectivityResult == ConnectivityResult.wifi) {
+        return _liquidService.throwConnectivityError();
+      } else {
+        return _liquidService.throwHTTPError('500', e.toString());
       }
     } catch (e) {
       return _liquidService.throwHTTPError('500', e.toString());
@@ -70,8 +75,7 @@ class LiquidHTTPCaller {
               .post(Uri.parse(url), body: jsonEncode(json))
               .timeout(Duration(seconds: Dao.inst.httpTimeout))
           : response = await http
-              .post(Uri.parse(url),
-                  headers: Dao.inst.httpHeaders, body: jsonEncode(json))
+              .post(Uri.parse(url), headers: Dao.inst.httpHeaders, body: jsonEncode(json))
               .timeout(Duration(seconds: Dao.inst.httpTimeout));
 
       if (response.statusCode == 200) {
@@ -82,8 +86,16 @@ class LiquidHTTPCaller {
             "...." +
             response.body);
       } else if (response.statusCode != 200 && Dao.inst.isDebug == false) {
-        return _liquidService.throwHTTPError(
-            response.statusCode.toString(), response.body);
+        return _liquidService.throwHTTPError(response.statusCode.toString(), response.body);
+      }
+    } on TimeoutException catch (e) {
+      var connectivityResult = await _connectivity.checkConnectivity();
+
+      if (connectivityResult == ConnectivityResult.mobile ||
+          connectivityResult == ConnectivityResult.wifi) {
+        return _liquidService.throwConnectivityError();
+      } else {
+        return _liquidService.throwHTTPError('500', e.toString());
       }
     } catch (e) {
       return _liquidService.throwHTTPError('500', e.toString());
@@ -99,8 +111,7 @@ class LiquidHTTPCaller {
               .patch(Uri.parse(url), body: jsonEncode(json))
               .timeout(Duration(seconds: Dao.inst.httpTimeout))
           : response = await http
-              .patch(Uri.parse(url),
-                  headers: Dao.inst.httpHeaders, body: jsonEncode(json))
+              .patch(Uri.parse(url), headers: Dao.inst.httpHeaders, body: jsonEncode(json))
               .timeout(Duration(seconds: Dao.inst.httpTimeout));
 
       if (response.statusCode == 200) {
@@ -111,8 +122,16 @@ class LiquidHTTPCaller {
             "...." +
             response.body);
       } else if (response.statusCode != 200 && Dao.inst.isDebug == false) {
-        return _liquidService.throwHTTPError(
-            response.statusCode.toString(), response.body);
+        return _liquidService.throwHTTPError(response.statusCode.toString(), response.body);
+      }
+    } on TimeoutException catch (e) {
+      var connectivityResult = await _connectivity.checkConnectivity();
+
+      if (connectivityResult == ConnectivityResult.mobile ||
+          connectivityResult == ConnectivityResult.wifi) {
+        return _liquidService.throwConnectivityError();
+      } else {
+        return _liquidService.throwHTTPError('500', e.toString());
       }
     } catch (e) {
       return _liquidService.throwHTTPError('500', e.toString());
@@ -124,9 +143,8 @@ class LiquidHTTPCaller {
 
     try {
       Dao.inst.httpHeaders == null
-          ? response = await http
-              .delete(Uri.parse(url))
-              .timeout(Duration(seconds: Dao.inst.httpTimeout))
+          ? response =
+              await http.delete(Uri.parse(url)).timeout(Duration(seconds: Dao.inst.httpTimeout))
           : response = await http
               .delete(Uri.parse(url), headers: Dao.inst.httpHeaders)
               .timeout(Duration(seconds: Dao.inst.httpTimeout));
@@ -139,8 +157,16 @@ class LiquidHTTPCaller {
             "...." +
             response.body);
       } else if (response.statusCode != 200 && Dao.inst.isDebug == false) {
-        return _liquidService.throwHTTPError(
-            response.statusCode.toString(), response.body);
+        return _liquidService.throwHTTPError(response.statusCode.toString(), response.body);
+      }
+    } on TimeoutException catch (e) {
+      var connectivityResult = await _connectivity.checkConnectivity();
+
+      if (connectivityResult == ConnectivityResult.mobile ||
+          connectivityResult == ConnectivityResult.wifi) {
+        return _liquidService.throwConnectivityError();
+      } else {
+        return _liquidService.throwHTTPError('500', e.toString());
       }
     } catch (e) {
       return _liquidService.throwHTTPError('500', e.toString());

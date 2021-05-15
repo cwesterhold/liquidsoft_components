@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:liquidsoft_components/services/liquidServices.dart';
 import 'package:liquidsoft_components/services/platformInfo.dart';
 
+/// You can use this class directly but the suggestion would be to use the service instead
+/// The service allows for callback function
+/// LiquidSoftService.approvalDialog()
+
 class LiquidApproveDialog extends StatefulWidget {
   final String title;
   final String text;
@@ -133,7 +137,6 @@ class _SystemPadding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new AnimatedContainer(
-        duration: const Duration(milliseconds: 200), child: child);
+    return new AnimatedContainer(duration: const Duration(milliseconds: 200), child: child);
   }
 }

@@ -1,20 +1,55 @@
 import 'package:flutter/material.dart';
 
+/// Returns styled text field
+
 class LiquidText extends StatelessWidget {
+  /// unique field name
   final String fieldName;
+
+  /// textfield label
   final String labelText;
+
+  /// validator of the textfield
+  /// (e) { if(e == null) return 'Field can't be blank'  }
   final String? Function(String?)? validator;
+
+  /// textfield controller
   final TextEditingController? controller;
+
+  /// onSaved function
   final Function(dynamic)? onSaved;
+
+  /// onChanged function
   final Function(dynamic)? onChanged;
+
+  /// the keyboard type that will pop up on focus
+  ///TextInputType = text,multiline,number,phone, datetime,email address,url
   final TextInputType keyboardType;
+
+  /// size of the field width
   final double fieldWidth;
+
+  /// height of the textfield
   final double fieldHeight;
+
+  /// is the field editable
+  /// if set to false, the field will be greyed out
   final bool isEdit;
+
+  /// onTap function
+  /// This can be very helpful if you are trying to open a date or time picker
   final Function()? onTap;
+
+  /// Icon that can be shown on the left side of the field
   final Icon? suffixIcon;
+
+  /// Icon that can be shown on the right side of the field
   final Icon? prefixIcon;
+
+  /// focus node to listen for focus changes
   final FocusNode? focusNode;
+
+  ///optional key
   final Key? key;
 
   LiquidText(

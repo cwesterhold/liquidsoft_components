@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:liquidsoft_components/liquid_components.dart';
 
 class LiquidScaffold extends StatefulWidget {
+  /// Provide a key for the scaffold
   final Key? key;
-  final List<NavBarItems> screens;
+
+  /// List of items to navBar items to feed into the scaffold
+  /// Each list item will get a nav bar item and a appbar
+  final List<NavBarItems> items;
 
   LiquidScaffold({
     this.key,
-    required this.screens,
+    required this.items,
   });
 
   @override
@@ -27,7 +31,7 @@ class _LiquidScaffoldState extends State<LiquidScaffold> {
             tabBar: CupertinoTabBar(
               activeColor: Theme.of(context).accentColor,
               inactiveColor: Theme.of(context).primaryColorLight,
-              items: widget.screens[_currentTabIndex].actions
+              items: widget.items[_currentTabIndex].actions
                   .map(
                     (e) => BottomNavigationBarItem(
                       icon: Icon(
@@ -41,8 +45,7 @@ class _LiquidScaffoldState extends State<LiquidScaffold> {
             ),
             tabBuilder: (BuildContext context, int index) {
               return CupertinoTabView(
-                builder: (BuildContext context) =>
-                    widget.screens[_currentTabIndex].screen,
+                builder: (BuildContext context) => widget.items[_currentTabIndex].screen,
               );
             },
           )
@@ -51,11 +54,10 @@ class _LiquidScaffoldState extends State<LiquidScaffold> {
               top: false,
               child: LiquidAppBar(
                   key: widget.key,
-                  title: widget.screens[_currentTabIndex].title,
-                  screen: widget.screens[_currentTabIndex].screen,
-                  appBarTrailing:
-                      widget.screens[_currentTabIndex].appBarTrailing,
-                  actions: widget.screens[_currentTabIndex].actions),
+                  title: widget.items[_currentTabIndex].title,
+                  screen: widget.items[_currentTabIndex].screen,
+                  appBarTrailing: widget.items[_currentTabIndex].appBarTrailing,
+                  actions: widget.items[_currentTabIndex].actions),
             ),
             bottomNavigationBar: BottomNavigationBar(
               selectedItemColor: Theme.of(context).accentColor,
@@ -69,7 +71,7 @@ class _LiquidScaffoldState extends State<LiquidScaffold> {
                 );
               }, // new
               currentIndex: _currentTabIndex, // new
-              items: widget.screens[_currentTabIndex].actions
+              items: widget.items[_currentTabIndex].actions
                   .map(
                     (e) => BottomNavigationBarItem(
                       icon: Icon(

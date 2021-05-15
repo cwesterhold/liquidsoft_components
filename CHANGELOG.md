@@ -1,3 +1,7 @@
+## 0.1.0
+* Add more documentation in widget classes
+* Bug Fixes
+
 ## 0.0.8
 * Initial LiquidAppBar
 * Initial LiquidScaffold

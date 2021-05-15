@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:liquidsoft_components/services/liquidServices.dart';
 import 'package:liquidsoft_components/services/platformInfo.dart';
 
+/// Returns a Material spinner or a Cupertino spinner based on platform
+
 class LiquidSpinner extends StatelessWidget {
-  final String title;
+  /// text to show over the spinner
+  final String? title;
+
+  ///optional Key
   final Key? key;
 
   LiquidSpinner({required this.title, this.key});
@@ -21,13 +26,14 @@ class LiquidSpinner extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 18.0),
-            child: Text(
-              title,
-              style: TextStyle(fontSize: 18, fontFamily: 'Comfortaa'),
+          if (title != null)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 18.0),
+              child: Text(
+                title!,
+                style: TextStyle(fontSize: 18, fontFamily: 'Comfortaa'),
+              ),
             ),
-          ),
           _liquidService.getPlatformType == PlatformType.iOS
               ? CupertinoActivityIndicator(
                   key: key,

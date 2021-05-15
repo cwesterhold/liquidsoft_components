@@ -4,29 +4,45 @@ import 'package:intl/intl.dart';
 import 'package:liquidsoft_components/services/liquidServices.dart';
 import 'package:liquidsoft_components/services/platformInfo.dart';
 
+/// Returns a Material Datepicker or a Cupertino date wheel based on platform
+
 class LiquidDate extends StatelessWidget {
+  /// the unique field name
   final String fieldName;
+
+  /// the label to be shown on the text field
   final String labelText;
+
+  /// validator of the textfield
+  /// (e) { if(e == null) return 'Field can't be blank'  }
   final String? Function(String?)? validator;
+
+  /// textfield controller
   final TextEditingController controller;
+
+  /// onSaved Function
   final Function(String?)? onSaved;
+
+  /// onChanged Function
   final Function(String?)? onChanged;
+
+  ///Width of the field
   final double fieldWidth;
-  final int maxLines;
+
+  /// is the field editable
   final bool isEdit;
-  final Function()? onTap;
+
+  /// optional key
   final Key? key;
 
   LiquidDate(
       {required this.fieldName,
       required this.labelText,
       required this.fieldWidth,
-      required this.maxLines,
       required this.validator,
       required this.controller,
       required this.onSaved,
       required this.onChanged,
-      this.onTap,
       required this.isEdit,
       this.key});
 

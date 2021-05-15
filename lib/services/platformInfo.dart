@@ -1,6 +1,11 @@
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:universal_io/io.dart';
 
+/// Returns back one of the following enum values for the platform group or type
+
+enum PlatformType { Web, iOS, Android, MacOS, Fuchsia, Linux, Windows, Unknown }
+enum PlatformGroup { web, mobile, desktop, unknown }
+
 class PlatformInfo {
   PlatformGroup getPlatformGroup() {
     if (kIsWeb) {
@@ -46,6 +51,3 @@ class PlatformInfo {
     return PlatformType.Unknown;
   }
 }
-
-enum PlatformType { Web, iOS, Android, MacOS, Fuchsia, Linux, Windows, Unknown }
-enum PlatformGroup { web, mobile, desktop, unknown }

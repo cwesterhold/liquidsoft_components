@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
+/// Returns a Header based on Themes accent color
+
 class LiquidHeader extends StatelessWidget {
+  /// header lable
   final String labelText;
+
+  /// font size
   final double fontSize;
+
+  /// optional keys
   final Key? key;
 
   LiquidHeader({required this.labelText, this.fontSize = 28, this.key});

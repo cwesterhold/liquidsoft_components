@@ -11,6 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.0
+  catcher: ^0.6.5
+  connectivity_plus: ^1.0.0
   intl: ^0.17.0
   universal_io: ^2.0.4
   floating_action_bubble:
