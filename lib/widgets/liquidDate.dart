@@ -49,7 +49,7 @@ class LiquidDate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LiquidSoftService _liquidService = LiquidSoftService();
-
+    print(controller.text);
     return Padding(
       padding: const EdgeInsets.only(top: 18.0),
       child: Container(
@@ -73,7 +73,7 @@ class LiquidDate extends StatelessWidget {
           onSaved: onSaved,
           onChanged: onChanged,
           onTap: () async {
-            DateTime date = DateTime(2020);
+            DateTime? date = DateTime(2020);
             FocusScope.of(context).requestFocus(new FocusNode());
 
             if (_liquidService.getPlatformType == PlatformType.iOS) {
@@ -123,15 +123,16 @@ class LiquidDate extends StatelessWidget {
                   );
                 },
               );
-              controller.text = DateFormat('yyyy-MM-dd').format(date);
+              if (date != null) controller.text = DateFormat('yyyy-MM-dd').format(date);
             } else {
-              date = (await showDatePicker(
+              date = await showDatePicker(
                 context: context,
-                initialDate: DateTime.parse(controller.text),
+                initialDate:
+                    controller.text == '' ? DateTime.now() : DateTime.parse(controller.text),
                 firstDate: date,
                 lastDate: DateTime(2100),
-              ))!;
-              controller.text = DateFormat('yyyy-MM-dd').format(date);
+              );
+              if (date != null) controller.text = DateFormat('yyyy-MM-dd').format(date);
             }
           },
         ),

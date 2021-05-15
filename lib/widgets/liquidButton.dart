@@ -23,7 +23,7 @@ class LiquidButton extends StatelessWidget {
   final Function() onPressed;
 
   /// color of the background
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// key for the button - optional
   final Key? key;
@@ -35,7 +35,7 @@ class LiquidButton extends StatelessWidget {
       this.width = 88,
       this.height = 36,
       required this.onPressed,
-      this.backgroundColor = Colors.blueAccent,
+      this.backgroundColor,
       this.key});
 
   @override
@@ -66,10 +66,9 @@ class LiquidButton extends StatelessWidget {
                 key: key,
                 onPressed: onPressed,
                 style: ButtonStyle(
-                  backgroundColor: backgroundColor == Colors.blueAccent
-                      ? MaterialStateProperty.all<Color>(
-                          Theme.of(context).accentColor)
-                      : MaterialStateProperty.all<Color>(backgroundColor),
+                  backgroundColor: backgroundColor == null
+                      ? MaterialStateProperty.all<Color>(Colors.blueAccent)
+                      : MaterialStateProperty.all<Color>(backgroundColor!),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(kIsWeb ? 12 : 5),

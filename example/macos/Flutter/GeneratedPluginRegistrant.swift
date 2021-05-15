@@ -6,7 +6,7 @@ import FlutterMacOS
 import Foundation
 
 import catcher
-import connectivity_plus_macos
+import connectivity_macos
 import device_info_plus_macos
 import package_info_plus_macos
 

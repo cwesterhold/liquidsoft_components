@@ -3,17 +3,14 @@
 ---Currently in beta testing---
 ---Please use with caution until we get to 1.0.0---
 
-A lightweight but complete component package to get your flutter project off the ground. 
-
-Want to implement both Material and Cupertino designs in your app?  We have taken the stress and work out of it.
-
-Just call on of our components and it will return the correct design for you.
-
-
+A lightweight but complete component package to get your flutter project off the ground.  Provides a large set of useful functions, wrapped into a single service, along with dynamic Cupertino/Material widgets based on device platform.
 
 Works with: iOS, Android, Web, macOS and all other flutter platforms
 
-Includes the following;
+Documentation: Find a complete set of documentation on our website - https://liquidsoft.io/flutter-components/
+
+
+## Features
 - HTTP Caller with error handling
     - Get, Post, Delete, Patch
     - Checks for connectivity on timeout (timeout set on init)
@@ -21,6 +18,10 @@ Includes the following;
         - Throws standard error on else
     - Returns back status code and error code dialog on error
     - if in debug mode throws error and prints out body
+- Error Handling
+    - HTTP Errors
+    - Connectivity Errors
+    - General Errors
 - Get Platform Type or Group
     - Group - web, mobile, desktop, or unknown
     - Type - Web, iOS, Android, MacOS, Fuchsia, Linux, Windows, or Unknown

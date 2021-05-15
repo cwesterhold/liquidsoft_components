@@ -35,8 +35,7 @@ class LiquidAppBar extends StatefulWidget {
   _LiquidAppBarState createState() => _LiquidAppBarState();
 }
 
-class _LiquidAppBarState extends State<LiquidAppBar>
-    with SingleTickerProviderStateMixin {
+class _LiquidAppBarState extends State<LiquidAppBar> with SingleTickerProviderStateMixin {
   LiquidSoftService _liquidService = LiquidSoftService();
   late Animation<double> _animation;
   late AnimationController _animationController;
@@ -49,8 +48,7 @@ class _LiquidAppBarState extends State<LiquidAppBar>
       duration: Duration(seconds: 1),
     );
 
-    final curvedAnimation =
-        CurvedAnimation(curve: Curves.easeInOut, parent: _animationController);
+    final curvedAnimation = CurvedAnimation(curve: Curves.easeInOut, parent: _animationController);
     _animation = Tween<double>(begin: 0, end: 1).animate(curvedAnimation);
 
     super.initState();
@@ -79,13 +77,12 @@ class _LiquidAppBarState extends State<LiquidAppBar>
                           onTap: () async {
                             return showCupertinoModalPopup(
                               context: context,
-                              builder: (BuildContext context) =>
-                                  CupertinoActionSheet(
+                              builder: (BuildContext context) => CupertinoActionSheet(
                                 title: Text('${widget.title} Actions'),
                                 actions: widget.actions!
                                     .map((e) => CupertinoActionSheetAction(
                                           child: Text(e.title),
-                                          onPressed: e.callBack(),
+                                          onPressed: e.callBack,
                                         ))
                                     .toList(),
                                 cancelButton: CupertinoActionSheetAction(
@@ -120,7 +117,10 @@ class _LiquidAppBarState extends State<LiquidAppBar>
                   backgroundColor: Theme.of(context).canvasColor,
                   automaticallyImplyLeading: false,
                   leadingWidth: 200,
-                  leading: LiquidLogo(),
+                  leading: Padding(
+                    padding: const EdgeInsets.only(left: 18.0),
+                    child: LiquidLogo(),
+                  ),
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     mainAxisSize: MainAxisSize.max,
@@ -137,9 +137,8 @@ class _LiquidAppBarState extends State<LiquidAppBar>
                           iconColor: Colors.white,
                           bubbleColor: Theme.of(context).accentColor,
                           icon: e.buttonIcon,
-                          titleStyle:
-                              TextStyle(fontSize: 16, color: Colors.white),
-                          onPress: e.callBack(),
+                          titleStyle: TextStyle(fontSize: 16, color: Colors.white),
+                          onPress: e.callBack,
                         ),
                       )
                       .toList(),

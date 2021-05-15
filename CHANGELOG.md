@@ -1,3 +1,7 @@
+## 0.2.0
+* Full Example Completed
+* Bug Fixes
+
 ## 0.1.0
 * Add more documentation in widget classes
 * Bug Fixes

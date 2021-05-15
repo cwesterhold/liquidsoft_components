@@ -1,12 +1,13 @@
 library liquidsoft_components;
 
+import 'package:flutter/material.dart';
 import 'package:liquidsoft_components/models/dao.dart';
 
+///export services and services
+export 'package:liquidsoft_components/models/actionButton.dart';
 export 'package:liquidsoft_components/models/navBarItems.dart';
 export 'package:liquidsoft_components/services/hexcolor.dart';
 export 'package:liquidsoft_components/services/liquidHTTPCaller.dart';
-
-///export services and services
 export 'package:liquidsoft_components/services/liquidServices.dart';
 export 'package:liquidsoft_components/services/platformInfo.dart';
 export 'package:liquidsoft_components/widgets/liquidAppBar.dart';
@@ -30,18 +31,31 @@ class LiquidSoftComponents {
     /// is this local development or running in production
     required bool isDebug,
 
+    /// Global Navigator Key
+    /// Use this in the Material or Cupertino App
+    required Key globalNavigatorKey,
+
     /// location of the logo to use for light modes
     String? logoLocationLight,
 
     /// location of the logo for use in dark modes
     String? logoLocationDark,
 
+    /// Dialog header for general errors
+    String? generalErrorHeader,
+
+    /// Dialog body text pre error body
+    String? generalPreErrorMessage,
+
+    /// Dialog body text post error body
+    String? generalPostErrorMessage,
+
     /// headers to be send for every http call
     Map<String, String>? httpHeaders,
 
     /// timeout for each http call
     /// There is a getNoTimeoutData method to ignore this setting
-    int httpTimeout = 5,
+    int? httpTimeout,
 
     /// Dialog header for http errors
     String? httpErrorHeader,
@@ -60,16 +74,17 @@ class LiquidSoftComponents {
   }) {
     /// take all of the init variables and write them to the Dao singleton
     /// this singleton will populate these variables to all other needed locations
+    Dao.inst.globalNavigatorKey = globalNavigatorKey;
     if (httpHeaders != null) Dao.inst.httpHeaders = httpHeaders;
-    Dao.inst.httpTimeout = httpTimeout;
+    if (httpTimeout != null) Dao.inst.httpTimeout = httpTimeout;
     Dao.inst.isDebug = isDebug;
+    if (generalErrorHeader != null) Dao.inst.generalErrorHeader = generalErrorHeader;
+    if (generalPreErrorMessage != null) Dao.inst.generalPreErrorMessage = generalPreErrorMessage;
+    if (generalPostErrorMessage != null) Dao.inst.generalPostErrorMessage = generalPostErrorMessage;
     if (httpErrorHeader != null) Dao.inst.httpErrorHeader = httpErrorHeader;
-    if (httpPreErrorMessage != null)
-      Dao.inst.httpPreErrorMessage = httpPreErrorMessage;
-    if (httpPostErrorMessage != null)
-      Dao.inst.httpPostErrorMessage = httpPostErrorMessage;
-    if (connectivityErrorHeader != null)
-      Dao.inst.connectivityErrorHeader = connectivityErrorHeader;
+    if (httpPreErrorMessage != null) Dao.inst.httpPreErrorMessage = httpPreErrorMessage;
+    if (httpPostErrorMessage != null) Dao.inst.httpPostErrorMessage = httpPostErrorMessage;
+    if (connectivityErrorHeader != null) Dao.inst.connectivityErrorHeader = connectivityErrorHeader;
     if (connectivityErrorMessage != null)
       Dao.inst.connectivityErrorMessage = connectivityErrorMessage;
     Dao.inst.logoLocationLight = logoLocationLight;

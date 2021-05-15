@@ -24,6 +24,11 @@ class _LiquidScaffoldState extends State<LiquidScaffold> {
   int _currentTabIndex = 0;
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return _liquidService.getPlatformType == PlatformType.iOS
         ? CupertinoTabScaffold(
@@ -31,11 +36,11 @@ class _LiquidScaffoldState extends State<LiquidScaffold> {
             tabBar: CupertinoTabBar(
               activeColor: Theme.of(context).accentColor,
               inactiveColor: Theme.of(context).primaryColorLight,
-              items: widget.items[_currentTabIndex].actions
+              items: widget.items
                   .map(
                     (e) => BottomNavigationBarItem(
                       icon: Icon(
-                        e.buttonIcon,
+                        e.navIcon,
                         color: Theme.of(context).accentColor,
                       ),
                       label: e.title,
@@ -45,8 +50,12 @@ class _LiquidScaffoldState extends State<LiquidScaffold> {
             ),
             tabBuilder: (BuildContext context, int index) {
               return CupertinoTabView(
-                builder: (BuildContext context) =>
-                    widget.items[_currentTabIndex].screen,
+                builder: (BuildContext context) => LiquidAppBar(
+                    key: widget.key,
+                    title: widget.items[index].title,
+                    screen: widget.items[index].screen,
+                    appBarTrailing: widget.items[index].appBarTrailing,
+                    actions: widget.items[index].actions),
               );
             },
           )
@@ -72,11 +81,11 @@ class _LiquidScaffoldState extends State<LiquidScaffold> {
                 );
               }, // new
               currentIndex: _currentTabIndex, // new
-              items: widget.items[_currentTabIndex].actions
+              items: widget.items
                   .map(
                     (e) => BottomNavigationBarItem(
                       icon: Icon(
-                        e.buttonIcon,
+                        e.navIcon,
                         color: Theme.of(context).accentColor,
                       ),
                       label: e.title,
