@@ -5,6 +5,7 @@ import 'package:liquidsoft_components/services/platformInfo.dart';
 import 'package:liquidsoft_components/widgets/liquidApproveDialog.dart';
 
 import '../models/dao.dart';
+import 'liquidHTTPCaller.dart';
 
 class LiquidSoftService {
   PlatformInfo _platformInfo = PlatformInfo();
@@ -15,6 +16,45 @@ class LiquidSoftService {
 
   PlatformType get getPlatformType {
     return _platformInfo.getPlatformType();
+  }
+
+  GlobalKey<NavigatorState> getNavigatorKey() {
+    Dao.inst.globalNavigatorKey = new GlobalKey<NavigatorState>();
+
+    return Dao.inst.globalNavigatorKey;
+  }
+
+  sendMail(String contactEmail, String contactName, String subject,
+      String message) async {
+    LiquidHTTPCaller _httpCaller = LiquidHTTPCaller();
+
+    _httpCaller.postData('https://api.liquidsoft.io/SendGrid/', {
+      "personalizations": [
+        {
+          "to": [
+            {
+              'email': contactEmail,
+              'name': contactName,
+            }
+          ],
+          "subject": subject,
+        }
+      ],
+      "from": {
+        "email": "mailer@liquidsoft.io",
+        'name': "Customer Service",
+      },
+      "reply_to": {
+        "email": "chris@liquidsoft.io",
+        'name': "Customer Service",
+      },
+      "content": [
+        {
+          "type": "text/html",
+          "value": message,
+        }
+      ]
+    });
   }
 
   catchError(String errorBody) {

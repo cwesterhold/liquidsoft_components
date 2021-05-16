@@ -1,6 +1,6 @@
-## 0.3.0
-* Improved Readme
-* Add images
+## 0.4.0
+* Improved Readme and overall documentation
+* Global error handling completed
 
 ## 0.2.0
 * Full Example Completed

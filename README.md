@@ -1,12 +1,10 @@
 # liquidsoft_components
 
 ---Currently in beta testing---
----Please use with caution until we get to 1.0.0---
 
 A lightweight but complete component package to get your flutter project off the ground.  Provides a large set of useful functions, wrapped into a single service, along with dynamic Cupertino/Material widgets based on device platform.
 
 Works with: iOS, Android, Web, macOS and all other flutter platforms
-
 
 Spend your time meeting the clients needs and not spending time styling widget over and over again.   The images below show one of the main widgets, LiquidScaffold.
 
@@ -25,10 +23,14 @@ Documentation: Find a complete set of documentation on our website - https://liq
         - Throws standard error on else
     - Returns back status code and error code dialog on error
     - if in debug mode throws error and prints out body
-- Error Handling
+- HTTP Error Handling
     - HTTP Errors
     - Connectivity Errors
-    - General Errors
+- Global Errors Handling
+    - Debug prints error to console
+    - Production 
+        - Catches errors and prints error out to  dialog
+        - Emails error to a given email address
 - Get Platform Type or Group
     - Group - web, mobile, desktop, or unknown
     - Type - Web, iOS, Android, MacOS, Fuchsia, Linux, Windows, or Unknown

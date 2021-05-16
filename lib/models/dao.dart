@@ -9,6 +9,7 @@ class Dao {
   Map<String, String>? httpHeaders;
   late bool isDebug;
   late Key globalNavigatorKey;
+  String? errorAdminEmail;
   int httpTimeout = 5;
   String httpErrorHeader = 'Application Error';
   String httpPreErrorMessage =

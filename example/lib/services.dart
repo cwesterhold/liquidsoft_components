@@ -24,6 +24,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
           ),
           Divider(),
           LiquidHeader(labelText: 'Liquid Errors'),
+          Text(
+              'Liquid Components takes care of the global error handling, including sending an email on production error.'),
           LiquidSmallButton(
             name: 'HTTP Error',
             onPressed: () {
@@ -38,9 +40,9 @@ class _ServicesScreenState extends State<ServicesScreen> {
             },
           ),
           LiquidSmallButton(
-            name: 'General Error',
+            name: 'Throw General Error',
             onPressed: () {
-              _liquidSoftService.catchError('something didnt go right...');
+              throw ('I am an error from the framework...');
             },
           ),
           LiquidHeader(labelText: 'Liquid Routing'),

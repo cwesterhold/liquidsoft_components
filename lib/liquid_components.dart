@@ -1,6 +1,10 @@
 library liquidsoft_components;
 
+import 'dart:async';
+import 'dart:isolate';
+
 import 'package:flutter/material.dart';
+import 'package:liquidsoft_components/liquid_components.dart';
 import 'package:liquidsoft_components/models/dao.dart';
 
 ///export services and services
@@ -26,58 +30,79 @@ export 'package:liquidsoft_components/widgets/liquidText.dart';
 export 'package:liquidsoft_components/widgets/liquidToggleBar.dart';
 
 class LiquidSoftComponents {
-  /// this call is required to set up variables used in the services
-  initState({
-    /// is this local development or running in production
-    required bool isDebug,
+  LiquidSoftService _liquidService = LiquidSoftService();
 
-    /// Global Navigator Key
-    /// Use this in the Material or Cupertino App
-    required Key globalNavigatorKey,
+  /// is this local development or running in production
+  bool isDebug;
 
-    /// location of the logo to use for light modes
-    String? logoLocationLight,
+  /// The root widget for the application
+  Widget rootWidget;
 
-    /// location of the logo for use in dark modes
-    String? logoLocationDark,
+  /// location of the logo to use for light modes
+  String? logoLocationLight;
 
-    /// Dialog header for general errors
-    String? generalErrorHeader,
+  /// location of the logo for use in dark modes
+  String? logoLocationDark;
 
-    /// Dialog body text pre error body
-    String? generalPreErrorMessage,
+  String? errorAdminEmail;
 
-    /// Dialog body text post error body
-    String? generalPostErrorMessage,
+  /// Dialog header for general errors
+  String? generalErrorHeader;
 
-    /// headers to be send for every http call
-    Map<String, String>? httpHeaders,
+  /// Dialog body text pre error body
+  String? generalPreErrorMessage;
 
-    /// timeout for each http call
-    /// There is a getNoTimeoutData method to ignore this setting
-    int? httpTimeout,
+  /// Dialog body text post error body
+  String? generalPostErrorMessage;
 
-    /// Dialog header for http errors
-    String? httpErrorHeader,
+  /// headers to be send for every http call
+  Map<String, String>? httpHeaders;
 
-    /// Dialog body text pre error code message
-    String? httpPreErrorMessage,
+  /// timeout for each http call
+  /// There is a getNoTimeoutData method to ignore this setting
+  int? httpTimeout;
 
-    /// Dialog body text post error code message
-    String? httpPostErrorMessage,
+  /// Dialog header for http errors
+  String? httpErrorHeader;
 
-    /// Dialog header for connectivity errors
-    String? connectivityErrorHeader,
+  /// Dialog body text pre error code message
+  String? httpPreErrorMessage;
 
-    /// Dialog body text for connectivity errors
-    String? connectivityErrorMessage,
-  }) {
+  /// Dialog body text post error code message
+  String? httpPostErrorMessage;
+
+  /// Dialog header for connectivity errors
+  String? connectivityErrorHeader;
+
+  /// Dialog body text for connectivity errors
+  String? connectivityErrorMessage;
+
+  LiquidSoftComponents(
+      {required this.isDebug,
+      required this.rootWidget,
+      this.logoLocationLight,
+      this.logoLocationDark,
+      this.errorAdminEmail,
+      this.generalErrorHeader,
+      this.generalPreErrorMessage,
+      this.generalPostErrorMessage,
+      this.httpHeaders,
+      this.httpTimeout,
+      this.httpErrorHeader,
+      this.httpPreErrorMessage,
+      this.httpPostErrorMessage,
+      this.connectivityErrorHeader,
+      this.connectivityErrorMessage}) {
+    _mainConfig();
+  }
+
+  void _mainConfig() async {
     /// take all of the init variables and write them to the Dao singleton
     /// this singleton will populate these variables to all other needed locations
-    Dao.inst.globalNavigatorKey = globalNavigatorKey;
     if (httpHeaders != null) Dao.inst.httpHeaders = httpHeaders;
     if (httpTimeout != null) Dao.inst.httpTimeout = httpTimeout;
     Dao.inst.isDebug = isDebug;
+    if (errorAdminEmail != null) Dao.inst.errorAdminEmail = errorAdminEmail;
     if (generalErrorHeader != null)
       Dao.inst.generalErrorHeader = generalErrorHeader;
     if (generalPreErrorMessage != null)
@@ -96,7 +121,64 @@ class LiquidSoftComponents {
     Dao.inst.logoLocationLight = logoLocationLight;
     Dao.inst.logoLocationDark = logoLocationDark;
 
-    /// successful initiation
-    print('LiquidSoft Components Init Successful');
+    await _errorHandlingConfig();
+    await _runApp(rootWidget);
+  }
+
+  _errorHandlingConfig() async {
+    FlutterError.onError = (FlutterErrorDetails details) async {
+      if (isDebug == true) {
+        print(
+            'Exception: ${details.exception.toString()} \n\n StackTrace:${details.stack.toString()} \n\n ErrorBody: ${details.toString()}');
+      } else {
+        _liquidService.catchError(details.exception.toString());
+        if (errorAdminEmail != null) {
+          _liquidService.sendMail(
+              errorAdminEmail!,
+              'App Error Email',
+              'generalErrorHeader',
+              'Exception: ${details.exception.toString()} \n\n StackTrace:${details.stack.toString()} \n\n ErrorBody: ${details.toString()}');
+        }
+      }
+    };
+
+    if (_liquidService.getPlatformType != PlatformType.Web) {
+      Isolate.current.addErrorListener(RawReceivePort((dynamic pair) async {
+        final isolateError = pair as List<dynamic>;
+        if (isDebug == true) {
+          print('Exception: ${isolateError.toString()}');
+        } else {
+          _liquidService.catchError(isolateError.toString());
+          if (errorAdminEmail != null) {
+            _liquidService.sendMail(errorAdminEmail!, 'App Error Email',
+                'generalErrorHeader', 'Exception: ${isolateError.toString()}');
+          }
+        }
+      }).sendPort);
+    }
+  }
+
+  _runApp(Widget rootWidget) {
+    runZonedGuarded<Future<void>>(
+      () async {
+        WidgetsFlutterBinding.ensureInitialized();
+
+        runApp(rootWidget);
+      },
+      (dynamic error, StackTrace stackTrace) {
+        if (isDebug == true) {
+          print('Exception: $error \n\n StackTrace:${stackTrace.toString()}');
+        } else {
+          _liquidService.catchError(error);
+          if (errorAdminEmail != null) {
+            _liquidService.sendMail(
+                errorAdminEmail!,
+                'App Error Email',
+                'generalErrorHeader',
+                'Exception: $error \n\n StackTrace:${stackTrace.toString()}');
+          }
+        }
+      },
+    );
   }
 }

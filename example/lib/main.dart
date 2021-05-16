@@ -5,7 +5,22 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:liquidsoft_components/liquid_components.dart';
 
 void main() {
-  runApp(ExampleApp());
+  bool isDebug = false;
+  assert(isDebug = true);
+
+  /// initialize the components, error handling, and httpcaller
+  LiquidSoftComponents(
+    rootWidget: ExampleApp(),
+    httpHeaders: {
+      "Access-Control-Allow-Origin": '*',
+      "accept": "application/json",
+      "content-type": "application/json",
+    },
+    errorAdminEmail: 'chris@liquidsoft.io',
+    isDebug: isDebug,
+    logoLocationLight: 'assets/lightLogo.png',
+    logoLocationDark: 'assets/darkLogo.png',
+  );
 }
 
 class ExampleApp extends StatefulWidget {
@@ -14,17 +29,10 @@ class ExampleApp extends StatefulWidget {
 }
 
 class _ExampleAppState extends State<ExampleApp> {
-  /// Bring in the component for initialization
-  LiquidSoftComponents _liquidComponents = LiquidSoftComponents();
-
-  /// this key is used across the components
-  /// Use this key in the Material or Cupertino App
-  GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
-
   /// get the services
   LiquidSoftService _liquidSoftService = LiquidSoftService();
 
-  /// Some of the components will use Theme.of to set the colors
+  /// Some of the components will use Theme.of to set the colors based on Brightness.light or dark
   /// Make sure to the theme set or you will get component errors
   final light = ThemeData(
     brightness: Brightness.light,
@@ -35,26 +43,6 @@ class _ExampleAppState extends State<ExampleApp> {
     backgroundColor: HexColor('#fafafa'),
     fontFamily: 'Comfortaa',
   );
-  bool isDebug = false;
-
-  @override
-  void initState() {
-    // change isDebug to true if in dev
-    assert(isDebug = true);
-
-    //init liquidsoft components
-    _liquidComponents.initState(
-        httpHeaders: {
-          "Access-Control-Allow-Origin": '*',
-          "accept": "application/json",
-          "content-type": "application/json",
-        },
-        globalNavigatorKey: navigatorKey,
-        isDebug: isDebug,
-        logoLocationLight: 'assets/lightLogo.png',
-        logoLocationDark: 'assets/darkLogo.png');
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,8 +55,13 @@ class _ExampleAppState extends State<ExampleApp> {
                 primaryColor: Theme.of(context).primaryColor,
                 primaryContrastingColor: Theme.of(context).accentColor,
               ),
-              navigatorKey: navigatorKey,
+
+              /// Make sure to add this key or error handling and any dialog/snackbars will not work
+              navigatorKey: _liquidSoftService.getNavigatorKey(),
               home: AppMainScreen(),
+
+              /// The localizations are required for cupertino
+              /// the text widgets need a Material ancestor
               localizationsDelegates: [
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
@@ -80,11 +73,15 @@ class _ExampleAppState extends State<ExampleApp> {
             ),
           )
         : MaterialApp(
-            navigatorKey: navigatorKey,
+            /// Make sure to add this key or error handling and any dialog/snackbars will not work
+            navigatorKey: _liquidSoftService.getNavigatorKey(),
             debugShowCheckedModeBanner: false,
             title: "LiquidSoft Component Example App",
             theme: light,
             home: AppMainScreen(),
+
+            /// The localizations are required for cupertino
+            /// the text widgets need a Material ancestor
             localizationsDelegates: [
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
