@@ -10,8 +10,12 @@ class OtherScreen extends StatefulWidget {
 class _OtherScreenState extends State<OtherScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('im Other'),
+    return Scaffold(
+      body: Center(
+        child: Container(
+          child: Text('Im just other blank screen...'),
+        ),
+      ),
     );
   }
 }

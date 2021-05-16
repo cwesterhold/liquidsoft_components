@@ -7,8 +7,10 @@ A lightweight but complete component package to get your flutter project off the
 
 Works with: iOS, Android, Web, macOS and all other flutter platforms
 
-Documentation: Find a complete set of documentation on our website - https://liquidsoft.io/flutter-components/
+![Screenshot_1615594687](https://liquidsoft.io/wp-content/uploads/2021/05/Screenshot_1621106171-142x300.png)
+![Screenshot_1615594689](https://liquidsoft.io/wp-content/uploads/2021/05/Simulator-Screen-Shot-iPhone-12-Pro-Max-2021-05-15-at-15.05.53-139x300.png)
 
+Documentation: Find a complete set of documentation on our website - https://liquidsoft.io/flutter-components/
 
 ## Features
 - HTTP Caller with error handling
@@ -43,7 +45,7 @@ Documentation: Find a complete set of documentation on our website - https://liq
 - SnackBar
     - Easily call snackBar from anywhere in the app
     - requires context and Scaffold.of
-- Scaffold - 
+- Scaffold 
     - Create a Material or Cupertino Scaffold
     - Optional Material AppBar or Cupertino Sliver AppBar
         - Uses LiquidLogo() to add logo to the left side of the appBar
@@ -158,6 +160,12 @@ All Initialization attributes
     - Used by the LiquidScaffold
 - Map<String, String> httpHeaders 
     - Headers to be passed via http call
+- String generalErrorHeader 
+    - Dialog header for general errors
+- String generalPreErrorMessage 
+    - Dialog body text pre error code message
+- String generalPostErrorMessage 
+    - Dialog body text post error code message
 - String httpErrorHeader 
     - Dialog header for http errors
 - String httpPreErrorMessage 
@@ -170,10 +178,12 @@ All Initialization attributes
     - Dialog body text for connectivity errors
  
  ## Documentation
-   - You can find a complete set of documentation 
+   - Complete set of documentation
+        - https://liquidsoft.io/flutter-components/
    - Check out the example project on our github site
         -  https://github.com/cwesterhold/liquidsoft_components
  
+ *** Services ***
  - HTTP Caller with error handling
      - Get, Post, Delete, Patch
      - Checks for connectivity on timeout (timeout set on init)
@@ -305,20 +315,29 @@ All Initialization attributes
       _liquidService.showSnackBar(context, 'Refreshing transactions is complete');
   ```  
 
- - Scaffold - In Development
-     - Material AppBar or Cupertino Sliver AppBar
-     - Material or Cupertino Bottom Nav Bar
-     
- - Secondary App Bar
+*** Widgets ***
+  Find complete examples of each in our example project or on our website - https://liquidsoft.io/flutter-components/
+ 
+ - Scaffold 
+     - Create a Material or Cupertino Scaffold
+     - Optional Material AppBar or Cupertino Sliver AppBar
+         - Uses LiquidLogo() to add logo to the left side of the appBar
+     - Optional Material or Cupertino Bottom Nav Bar
+     - Creates Floating action button or Cupertino action sheet
+     - Pass in NavBarItems list and it will create the appBar, NavBar,actions buttons, and body for you :-)
+ - App Bar
      - Creates a Material or Cupertino appbar
+     - Uses LiquidLogo() to add logo to the left side of the appBar
      - Allows for a trailing Widget
-     
-     
+     - Pass in the screen body
  - Standard Dialog
      - Opens a cupertino or material dialog
+     - Standard dialog with an OK button
  - Approval Dialog
+     - Opens a cupertino or material dialog
      - Used for standard approvals, like deletions
-     - Pass in a successCallback function  
+     - Approve or Deny 
+     - Pass in a approveCallback function  
  - Buttons
      - Cupertino or Material button
      - adjust width, height,font size, and background color
@@ -339,8 +358,14 @@ All Initialization attributes
      - Keyboard types, focusNodes, validation and more
  - Spinner
      - Cupertino or Material Spinner
-     - Provide Text for context
+     - Provide Text for loading context
  - Toggle Bar
+     - Horizontal tab interface capable of handing any number of inputs. 
+     - Easily customize colors with an easy to use set of attributes.
+ - Switch - Coming soon
+     - Cupertino or Material Switch
+     - customize colors and size
+ - Search Bar - Coming Soon
 
 
  ## Contributors Welcome

@@ -1,3 +1,7 @@
+## 0.3.0
+* Improved Readme
+* Add images
+
 ## 0.2.0
 * Full Example Completed
 * Bug Fixes
