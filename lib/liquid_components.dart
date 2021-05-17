@@ -159,7 +159,6 @@ class LiquidSoftComponents {
         runApp(rootWidget);
       },
       (dynamic error, StackTrace stackTrace) {
-        print(isDebug);
         if (isDebug == true) {
           print('Exception: $error \n\n StackTrace:${stackTrace.toString()}');
         } else {

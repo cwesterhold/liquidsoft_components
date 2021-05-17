@@ -1,3 +1,6 @@
+## 0.6.0
+* Improved Error Handling
+* Improved Docs
 
 ## 0.5.0
 * Update Readme

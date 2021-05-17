@@ -55,7 +55,7 @@ class LiquidSoftService {
   }
 
   catchError(String errorBody) {
-    Dao.inst.globalNavigatorKey.currentContext == null
+    Dao.inst.isDebug == true
         ? openDialog(Dao.inst.globalNavigatorKey.currentContext, Dao.inst.generalErrorHeader,
             '${Dao.inst.generalPreErrorMessage}  \n\n Error - $errorBody  \n\n${Dao.inst.generalPostErrorMessage}')
         : print(
@@ -63,8 +63,11 @@ class LiquidSoftService {
   }
 
   throwHTTPError(String resStatusCode, String resBody) {
-    openDialog(Dao.inst.globalNavigatorKey.currentContext, Dao.inst.httpErrorHeader,
-        '${Dao.inst.httpPreErrorMessage}  \n\n Error Code - $resStatusCode \n\n Error - $resBody  \n\n${Dao.inst.httpPostErrorMessage}');
+    Dao.inst.isDebug == true
+        ? openDialog(Dao.inst.globalNavigatorKey.currentContext, Dao.inst.httpErrorHeader,
+            '${Dao.inst.httpPreErrorMessage}  \n\n Error Code - $resStatusCode \n\n Error - $resBody  \n\n${Dao.inst.httpPostErrorMessage}')
+        : print(
+            '${Dao.inst.httpPreErrorMessage}  \n\n Error Code - $resStatusCode \n\n Error - $resBody  \n\n${Dao.inst.httpPostErrorMessage}');
   }
 
   throwConnectivityError() {
