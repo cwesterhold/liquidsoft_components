@@ -55,8 +55,11 @@ class LiquidSoftService {
   }
 
   catchError(String errorBody) {
-    openDialog(Dao.inst.globalNavigatorKey.currentContext, Dao.inst.generalErrorHeader,
-        '${Dao.inst.generalPreErrorMessage}  \n\n Error - $errorBody  \n\n${Dao.inst.generalPostErrorMessage}');
+    Dao.inst.globalNavigatorKey.currentContext == null
+        ? openDialog(Dao.inst.globalNavigatorKey.currentContext, Dao.inst.generalErrorHeader,
+            '${Dao.inst.generalPreErrorMessage}  \n\n Error - $errorBody  \n\n${Dao.inst.generalPostErrorMessage}')
+        : print(
+            '${Dao.inst.generalPreErrorMessage}  \n\n Error - $errorBody  \n\n${Dao.inst.generalPostErrorMessage}');
   }
 
   throwHTTPError(String resStatusCode, String resBody) {
