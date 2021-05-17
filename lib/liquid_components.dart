@@ -115,6 +115,8 @@ class LiquidSoftComponents {
     Dao.inst.logoLocationLight = logoLocationLight;
     Dao.inst.logoLocationDark = logoLocationDark;
 
+    Dao.inst.globalNavigatorKey = new GlobalKey<NavigatorState>();
+
     await _errorHandlingConfig();
     await _runApp(rootWidget);
   }
@@ -153,7 +155,7 @@ class LiquidSoftComponents {
     runZonedGuarded<Future<void>>(
       () async {
         WidgetsFlutterBinding.ensureInitialized();
-
+        print('LiquidSoft Components Initialized');
         runApp(rootWidget);
       },
       (dynamic error, StackTrace stackTrace) {
