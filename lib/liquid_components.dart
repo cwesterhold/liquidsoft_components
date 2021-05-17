@@ -1,11 +1,11 @@
 library liquidsoft_components;
 
 import 'dart:async';
-import 'dart:isolate';
 
 import 'package:flutter/material.dart';
 import 'package:liquidsoft_components/liquid_components.dart';
 import 'package:liquidsoft_components/models/dao.dart';
+import 'package:liquidsoft_components/models/errorHandling/errorManager.dart';
 
 ///export services and services
 export 'package:liquidsoft_components/models/actionButton.dart';
@@ -97,6 +97,8 @@ class LiquidSoftComponents {
   }
 
   void _mainConfig() async {
+    ErrorManager _errorManager = ErrorManager();
+
     /// take all of the init variables and write them to the Dao singleton
     /// this singleton will populate these variables to all other needed locations
     if (httpHeaders != null) Dao.inst.httpHeaders = httpHeaders;
@@ -123,41 +125,8 @@ class LiquidSoftComponents {
 
     Dao.inst.globalNavigatorKey = new GlobalKey<NavigatorState>();
 
-    await _errorHandlingConfig();
+    await _errorManager.initError(isDebug, errorAdminEmail);
     await _runApp(rootWidget);
-  }
-
-  _errorHandlingConfig() async {
-    FlutterError.onError = (FlutterErrorDetails details) async {
-      if (isDebug == true) {
-        print(
-            'Exception: ${details.exception.toString()} \n\n StackTrace:${details.stack.toString()} \n\n ErrorBody: ${details.toString()}');
-      } else {
-        _liquidService.catchError(details.exception.toString());
-        if (errorAdminEmail != null) {
-          _liquidService.sendMail(
-              errorAdminEmail!,
-              'App Error Email',
-              'generalErrorHeader',
-              'Exception: ${details.exception.toString()} \n\n StackTrace:${details.stack.toString()} \n\n ErrorBody: ${details.toString()}');
-        }
-      }
-    };
-
-    if (_liquidService.getPlatformType != PlatformType.Web) {
-      Isolate.current.addErrorListener(RawReceivePort((dynamic pair) async {
-        final isolateError = pair as List<dynamic>;
-        if (isDebug == true) {
-          print('Exception: ${isolateError.toString()}');
-        } else {
-          _liquidService.catchError(isolateError.toString());
-          if (errorAdminEmail != null) {
-            _liquidService.sendMail(errorAdminEmail!, 'App Error Email',
-                'generalErrorHeader', 'Exception: ${isolateError.toString()}');
-          }
-        }
-      }).sendPort);
-    }
   }
 
   _runApp(Widget rootWidget) {

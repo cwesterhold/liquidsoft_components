@@ -1,3 +1,7 @@
+## 0.7.0
+* add Global Error Handling Web support
+* Bug Fixes
+
 ## 0.6.0
 * Improved Error Handling
 * Improved Docs

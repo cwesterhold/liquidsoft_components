@@ -18,12 +18,11 @@ class LiquidSoftService {
     return _platformInfo.getPlatformType();
   }
 
-  GlobalKey<NavigatorState> getNavigatorKey() {
+  GlobalKey<NavigatorState> get navigatorKey {
     return Dao.inst.globalNavigatorKey;
   }
 
-  sendMail(String contactEmail, String contactName, String subject,
-      String message) async {
+  sendMail(String contactEmail, String contactName, String subject, String message) async {
     LiquidHTTPCaller _httpCaller = LiquidHTTPCaller();
 
     _httpCaller.postData('https://api.liquidsoft.io/SendGrid/', {
@@ -57,9 +56,7 @@ class LiquidSoftService {
 
   catchError(String errorBody) {
     Dao.inst.isDebug == true
-        ? openDialog(
-            Dao.inst.globalNavigatorKey.currentContext,
-            Dao.inst.generalErrorHeader,
+        ? openDialog(Dao.inst.globalNavigatorKey.currentContext, Dao.inst.generalErrorHeader,
             '${Dao.inst.generalPreErrorMessage}  \n\n Error - $errorBody  \n\n${Dao.inst.generalPostErrorMessage}')
         : print(
             '${Dao.inst.generalPreErrorMessage}  \n\n Error - $errorBody  \n\n${Dao.inst.generalPostErrorMessage}');
@@ -67,17 +64,15 @@ class LiquidSoftService {
 
   throwHTTPError(String resStatusCode, String resBody) {
     Dao.inst.isDebug == true
-        ? openDialog(
-            Dao.inst.globalNavigatorKey.currentContext,
-            Dao.inst.httpErrorHeader,
+        ? openDialog(Dao.inst.globalNavigatorKey.currentContext, Dao.inst.httpErrorHeader,
             '${Dao.inst.httpPreErrorMessage}  \n\n Error Code - $resStatusCode \n\n Error - $resBody  \n\n${Dao.inst.httpPostErrorMessage}')
         : print(
             '${Dao.inst.httpPreErrorMessage}  \n\n Error Code - $resStatusCode \n\n Error - $resBody  \n\n${Dao.inst.httpPostErrorMessage}');
   }
 
   throwConnectivityError() {
-    openDialog(Dao.inst.globalNavigatorKey.currentContext,
-        Dao.inst.connectivityErrorHeader, Dao.inst.connectivityErrorMessage);
+    openDialog(Dao.inst.globalNavigatorKey.currentContext, Dao.inst.connectivityErrorHeader,
+        Dao.inst.connectivityErrorMessage);
   }
 
   routePage(context, Widget route) {
@@ -112,20 +107,14 @@ class LiquidSoftService {
     return '\$${dollarString.toStringAsFixed(2).replaceAllMapped(reg, mathFunc)}';
   }
 
-  String numberFormat(double numberString,
-      {String format = "###.0#", String locale = 'en_US'}) {
+  String numberFormat(double numberString, {String format = "###.0#", String locale = 'en_US'}) {
     var f = NumberFormat(format, locale);
 
     return f.format(numberString);
   }
 
-  approvalDialog(
-      BuildContext context,
-      String title,
-      String text,
-      String approveButtonText,
-      String denyButtonText,
-      Function successCallback) async {
+  approvalDialog(BuildContext context, String title, String text, String approveButtonText,
+      String denyButtonText, Function successCallback) async {
     final result = await showDialog(
       context: context,
       builder: (context) => LiquidApproveDialog(
@@ -141,8 +130,7 @@ class LiquidSoftService {
     }
   }
 
-  openDialog(BuildContext context, String title, String text,
-      {int numPops = 1}) {
+  openDialog(BuildContext context, String title, String text, {int numPops = 1}) {
     if (getPlatformType == PlatformType.iOS) {
       showDialog(
         context: context,

@@ -57,7 +57,7 @@ class _ExampleAppState extends State<ExampleApp> {
               ),
 
               /// Make sure to add this key or error handling and any dialog/snackbars will not work
-              navigatorKey: _liquidSoftService.getNavigatorKey(),
+              navigatorKey: _liquidSoftService.navigatorKey,
               home: AppMainScreen(),
 
               /// The localizations are required for cupertino
@@ -74,7 +74,7 @@ class _ExampleAppState extends State<ExampleApp> {
           )
         : MaterialApp(
             /// Make sure to add this key or error handling and any dialog/snackbars will not work
-            navigatorKey: _liquidSoftService.getNavigatorKey(),
+            navigatorKey: _liquidSoftService.navigatorKey,
             debugShowCheckedModeBanner: false,
             title: "LiquidSoft Component Example App",
             theme: light,

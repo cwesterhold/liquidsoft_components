@@ -6,7 +6,7 @@ A lightweight but complete component package to get your flutter project off the
 
 Works with: iOS, Android, Web, macOS and all other flutter platforms
 
-Spend more time building your app and not spending time styling widgets over and over again.   The images below show one of the main widgets, LiquidScaffold.
+The images below show one of the main widgets, LiquidScaffold.
 
 LiquidScaffold - Creates the Bottom Navigation Bar, the top AppBar, and the action buttons based on platform.  The same code created both of the below layouts, one for iOS and the other for Android.  A user of your app will expect native layouts and actions, the LiquidSoft Component library makes this easy.
 
