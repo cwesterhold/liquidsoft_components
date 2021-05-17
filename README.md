@@ -2,13 +2,13 @@
 
 ---Currently in beta testing---
 
-A lightweight but complete component package to get your flutter project off the ground.  Provides a large set of useful functions, wrapped into a single service, along with dynamic Cupertino/Material widgets based on device platform.
+A lightweight but complete component package to get your flutter project off the ground.  Provides an HTTP Caller, Global Error Handling, large set of useful methods, along with dynamic Cupertino/Material widgets based on device platform.
 
 Works with: iOS, Android, Web, macOS and all other flutter platforms
 
-Spend your time meeting the clients needs and not spending time styling widget over and over again.   The images below show one of the main widgets, LiquidScaffold.
+Spend more time building your app and not spending time styling widgets over and over again.   The images below show one of the main widgets, LiquidScaffold.
 
-LiquidScaffold - Creates the Bottom Navigation Bar, the top AppBar, and the action buttons.  The same code created both of the below layouts, one for iOS and the other for Android.  A user of your app will expect native layouts and actions, the LiquidSoft Component library makes this easy.
+LiquidScaffold - Creates the Bottom Navigation Bar, the top AppBar, and the action buttons based on platform.  The same code created both of the below layouts, one for iOS and the other for Android.  A user of your app will expect native layouts and actions, the LiquidSoft Component library makes this easy.
 
 ![Screenshot_1615594687](https://liquidsoft.io/wp-content/uploads/2021/05/Screenshot_1621106171-142x300.png)
 ![Screenshot_1615594689](https://liquidsoft.io/wp-content/uploads/2021/05/Simulator-Screen-Shot-iPhone-12-Pro-Max-2021-05-15-at-15.05.53-139x300.png)
@@ -145,16 +145,19 @@ Initialize liquidsoft_components
 - If you are using the HTTP Caller, then it must be initialized before any calls are made
 
 ```
-LiquidSoftComponents _liquidComponents = LiquidSoftComponents();
-
-/// This is the bare minimum initialization
-_liquidComponents.initState(
+  /// This is a basic implementation - see all attributtes below
+  LiquidSoftComponents(
+    rootWidget: ExampleApp(),
     httpHeaders: {
-      "Authorization": "Your Auth Token",
       "Access-Control-Allow-Origin": '*',
+      "accept": "application/json",
       "content-type": "application/json",
     },
-    isDebug: false);
+    errorAdminEmail: 'chris@liquidsoft.io',
+    isDebug: isDebug,
+    logoLocationLight: 'assets/lightLogo.png',
+    logoLocationDark: 'assets/darkLogo.png',
+  );
 
 ```
 
@@ -234,7 +237,16 @@ All Initialization attributes
          var data = await _httpCaller.deleteData(url);
        }
  ```    
-   
+ - Error Handling
+ ```
+LiquidSoftService _liquidService = LiquidSoftService();
+
+// Use the catchError method in try/catch blocks or anywhere you want to catch an error
+// This will print to the console in debug and show a dialog/send and email in production
+
+_liquidService.catchError(details.exception.toString());
+
+```
  - Get Platform Type or Group
      - Group - web, mobile, desktop, or unknown
      - Type - Web, iOS, Android, MacOS, Fuchsia, Linux, Windows, or Unknown
@@ -378,6 +390,7 @@ All Initialization attributes
  ## Contributors Welcome
    - Want to help out? You're more than welcome! 
    - Fork the repo and send us a PR
+   - Or if you want join as a contributor/maintainer, reach out to chris@liquidsoft.io
  
  ## Change Log
 

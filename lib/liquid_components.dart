@@ -103,19 +103,13 @@ class LiquidSoftComponents {
     if (httpTimeout != null) Dao.inst.httpTimeout = httpTimeout;
     Dao.inst.isDebug = isDebug;
     if (errorAdminEmail != null) Dao.inst.errorAdminEmail = errorAdminEmail;
-    if (generalErrorHeader != null)
-      Dao.inst.generalErrorHeader = generalErrorHeader;
-    if (generalPreErrorMessage != null)
-      Dao.inst.generalPreErrorMessage = generalPreErrorMessage;
-    if (generalPostErrorMessage != null)
-      Dao.inst.generalPostErrorMessage = generalPostErrorMessage;
+    if (generalErrorHeader != null) Dao.inst.generalErrorHeader = generalErrorHeader;
+    if (generalPreErrorMessage != null) Dao.inst.generalPreErrorMessage = generalPreErrorMessage;
+    if (generalPostErrorMessage != null) Dao.inst.generalPostErrorMessage = generalPostErrorMessage;
     if (httpErrorHeader != null) Dao.inst.httpErrorHeader = httpErrorHeader;
-    if (httpPreErrorMessage != null)
-      Dao.inst.httpPreErrorMessage = httpPreErrorMessage;
-    if (httpPostErrorMessage != null)
-      Dao.inst.httpPostErrorMessage = httpPostErrorMessage;
-    if (connectivityErrorHeader != null)
-      Dao.inst.connectivityErrorHeader = connectivityErrorHeader;
+    if (httpPreErrorMessage != null) Dao.inst.httpPreErrorMessage = httpPreErrorMessage;
+    if (httpPostErrorMessage != null) Dao.inst.httpPostErrorMessage = httpPostErrorMessage;
+    if (connectivityErrorHeader != null) Dao.inst.connectivityErrorHeader = connectivityErrorHeader;
     if (connectivityErrorMessage != null)
       Dao.inst.connectivityErrorMessage = connectivityErrorMessage;
     Dao.inst.logoLocationLight = logoLocationLight;
@@ -133,10 +127,7 @@ class LiquidSoftComponents {
       } else {
         _liquidService.catchError(details.exception.toString());
         if (errorAdminEmail != null) {
-          _liquidService.sendMail(
-              errorAdminEmail!,
-              'App Error Email',
-              'generalErrorHeader',
+          _liquidService.sendMail(errorAdminEmail!, 'App Error Email', 'generalErrorHeader',
               'Exception: ${details.exception.toString()} \n\n StackTrace:${details.stack.toString()} \n\n ErrorBody: ${details.toString()}');
         }
       }
@@ -150,8 +141,8 @@ class LiquidSoftComponents {
         } else {
           _liquidService.catchError(isolateError.toString());
           if (errorAdminEmail != null) {
-            _liquidService.sendMail(errorAdminEmail!, 'App Error Email',
-                'generalErrorHeader', 'Exception: ${isolateError.toString()}');
+            _liquidService.sendMail(errorAdminEmail!, 'App Error Email', 'generalErrorHeader',
+                'Exception: ${isolateError.toString()}');
           }
         }
       }).sendPort);
@@ -169,12 +160,9 @@ class LiquidSoftComponents {
         if (isDebug == true) {
           print('Exception: $error \n\n StackTrace:${stackTrace.toString()}');
         } else {
-          _liquidService.catchError(error);
+          _liquidService.catchError(error.toString());
           if (errorAdminEmail != null) {
-            _liquidService.sendMail(
-                errorAdminEmail!,
-                'App Error Email',
-                'generalErrorHeader',
+            _liquidService.sendMail(errorAdminEmail!, 'App Error Email', 'generalErrorHeader',
                 'Exception: $error \n\n StackTrace:${stackTrace.toString()}');
           }
         }

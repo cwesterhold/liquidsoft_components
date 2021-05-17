@@ -1,3 +1,8 @@
+
+## 0.5.0
+* Update Readme
+* Bug Fixes
+
 ## 0.4.0
 * Improved Readme and overall documentation
 * Global error handling completed
