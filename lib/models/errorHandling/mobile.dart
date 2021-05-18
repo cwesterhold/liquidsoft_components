@@ -19,7 +19,10 @@ class WebErrors implements ErrorManager {
       } else {
         _liquidService.catchError(details.exception.toString());
         if (errorAdminEmail != null) {
-          _liquidService.sendMail(errorAdminEmail!, 'App Error Email', 'generalErrorHeader',
+          _liquidService.sendMail(
+              errorAdminEmail!,
+              'App Error Email',
+              'generalErrorHeader',
               'Exception: ${details.exception.toString()} \n\n StackTrace:${details.stack.toString()} \n\n ErrorBody: ${details.toString()}');
         }
       }
@@ -32,8 +35,8 @@ class WebErrors implements ErrorManager {
       } else {
         _liquidService.catchError(isolateError.toString());
         if (errorAdminEmail != null) {
-          _liquidService.sendMail(errorAdminEmail!, 'App Error Email', 'generalErrorHeader',
-              'Exception: ${isolateError.toString()}');
+          _liquidService.sendMail(errorAdminEmail!, 'App Error Email',
+              'generalErrorHeader', 'Exception: ${isolateError.toString()}');
         }
       }
     }).sendPort);

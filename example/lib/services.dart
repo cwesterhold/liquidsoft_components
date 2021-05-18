@@ -18,46 +18,44 @@ class _ServicesScreenState extends State<ServicesScreen> {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 18.0),
-            child:
-                Text('Here are examples of all of the widgets in the library'),
+            padding: const EdgeInsets.only(top: 18.0, bottom: 8),
+            child: Text('Here are examples of all of the widgets in the library'),
           ),
-          Divider(),
           LiquidHeader(labelText: 'Liquid Errors'),
           Text(
               'Liquid Components takes care of the global error handling, including sending an email on production error.'),
-          LiquidSmallButton(
+          LiquidButton(
             name: 'HTTP Error',
             onPressed: () {
-              _liquidSoftService.throwHTTPError(
-                  '500', 'something didnt go right...');
+              _liquidSoftService.throwHTTPError('500', 'something didnt go right...');
             },
           ),
-          LiquidSmallButton(
+          LiquidButton(
             name: 'Connectivity Error',
             onPressed: () {
               _liquidSoftService.throwConnectivityError();
             },
           ),
-          LiquidSmallButton(
+          LiquidButton(
             name: 'Throw General Error',
             onPressed: () {
-              throw ('I am an error from the framework...');
+              return Future.error("This is the error", StackTrace.fromString("This is its trace"));
             },
           ),
           LiquidHeader(labelText: 'Liquid Routing'),
-          LiquidSmallButton(
+          LiquidButton(
             name: 'Route to Secondary Page',
             onPressed: () {
               _liquidSoftService.routePage(context, SecondaryPage());
             },
           ),
           LiquidHeader(labelText: 'Liquid SnackBar'),
-          LiquidSmallButton(
+          LiquidButton(
             name: 'Open SnackBar',
             onPressed: () {
-              _liquidSoftService.showSnackBar(
-                  context, 'This is a liquid snackbar');
+              _liquidSoftService.showSnackBar('This is a liquid snackbar');
+              _liquidSoftService.openDialog(
+                  'Liquid Dialog', 'This opened a dialog based on the platform');
             },
           ),
           LiquidHeader(labelText: 'Liquid Dollar Formatting'),
@@ -67,11 +65,10 @@ class _ServicesScreenState extends State<ServicesScreen> {
           Text('Starting number - 124.584838382'),
           Text('Output - ${_liquidSoftService.numberFormat(124.584838382)}'),
           LiquidHeader(labelText: 'Liquid Approval Dialog'),
-          LiquidSmallButton(
+          LiquidButton(
             name: 'Open Approval',
             onPressed: () {
               _liquidSoftService.approvalDialog(
-                context,
                 'Approval Dialog',
                 'Please approve this ask',
                 'Approve',
@@ -85,11 +82,11 @@ class _ServicesScreenState extends State<ServicesScreen> {
           LiquidHeader(labelText: 'Liquid Dialog'),
           Padding(
             padding: const EdgeInsets.only(bottom: 68.0),
-            child: LiquidSmallButton(
+            child: LiquidButton(
               name: 'Open Dialog',
               onPressed: () {
-                _liquidSoftService.openDialog(context, 'Liquid Dialog',
-                    'This opened a dialog based on the platform');
+                _liquidSoftService.openDialog(
+                    'Liquid Dialog', 'This opened a dialog based on the platform');
               },
             ),
           )

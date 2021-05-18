@@ -10,8 +10,8 @@ The images below show one of the main widgets, LiquidScaffold.
 
 LiquidScaffold - Creates the Bottom Navigation Bar, the top AppBar, and the action buttons based on platform.  The same code created both of the below layouts, one for iOS and the other for Android.  A user of your app will expect native layouts and actions, the LiquidSoft Component library makes this easy.
 
-![Screenshot_1615594687](https://liquidsoft.io/wp-content/uploads/2021/05/Screenshot_1621106171-142x300.png)
-![Screenshot_1615594689](https://liquidsoft.io/wp-content/uploads/2021/05/Simulator-Screen-Shot-iPhone-12-Pro-Max-2021-05-15-at-15.05.53-139x300.png)
+![Screenshot_1615594687](https://liquidsoft.io/wp-content/uploads/2021/05/ComponentExampleIOS-522x1024.png)
+![Screenshot_1615594689](https://liquidsoft.io/wp-content/uploads/2021/05/compExampleAndroid-563x1024.png)
 
 Documentation: Find a complete set of documentation on our website - https://liquidsoft.io/flutter-components/
 
@@ -51,7 +51,6 @@ Documentation: Find a complete set of documentation on our website - https://liq
     - Web defaults to Material
 - SnackBar
     - Easily call snackBar from anywhere in the app
-    - requires context and Scaffold.of
 - Scaffold 
     - Create a Material or Cupertino Scaffold
     - Optional Material AppBar or Cupertino Sliver AppBar
@@ -64,6 +63,10 @@ Documentation: Find a complete set of documentation on our website - https://liq
     - Uses LiquidLogo() to add logo to the left side of the appBar
     - Allows for a trailing Widget
     - Pass in the screen body
+- Secondary App Bar
+    - Create a Material or Cupertino appBar with back transition arrow
+    - Centered page name 
+    - Dynamic trailing widget
 - Standard Dialog
     - Opens a cupertino or material dialog
     - Standard dialog with an OK button
@@ -72,7 +75,7 @@ Documentation: Find a complete set of documentation on our website - https://liq
     - Used for standard approvals, like deletions
     - Approve or Deny 
     - Pass in a approveCallback function  
-- Buttons
+- LiquidButton
     - Cupertino or Material button
     - adjust width, height,font size, and background color
 - DatePicker
@@ -102,7 +105,7 @@ Documentation: Find a complete set of documentation on our website - https://liq
 - Search Bar - Coming Soon
     
 
-Please check out each widgets page for implementation details
+Please check out each example for implementation details on each widget
 
 ## Getting Started
 
@@ -141,8 +144,7 @@ Import liquidsoft_components to main.dart file
 
 
 Initialize liquidsoft_components
-- this should be done as soon as possible in the app init process
-- If you are using the HTTP Caller, then it must be initialized before any calls are made
+LiquidSoftComponents is the base widget to use in your Main function.  The rootWidget parameter takes your applications root and sets up the global error handling along with the http caller. 
 
 ```
   /// This is a basic implementation - see all attributtes below
@@ -170,6 +172,8 @@ All Initialization attributes
     - Used by the LiquidScaffold
 - Map<String, String> httpHeaders 
     - Headers to be passed via http call
+- String errorAdminEmail 
+    - Email to be notified on a production error
 - String generalErrorHeader 
     - Dialog header for general errors
 - String generalPreErrorMessage 
@@ -357,7 +361,7 @@ _liquidService.catchError(details.exception.toString());
      - Used for standard approvals, like deletions
      - Approve or Deny 
      - Pass in a approveCallback function  
- - Buttons
+ - LiquidButton
      - Cupertino or Material button
      - adjust width, height,font size, and background color
  - DatePicker

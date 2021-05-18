@@ -56,7 +56,7 @@ class LiquidSoftService {
 
   catchError(String errorBody) {
     Dao.inst.isDebug == true
-        ? openDialog(Dao.inst.globalNavigatorKey.currentContext, Dao.inst.generalErrorHeader,
+        ? openDialog(Dao.inst.generalErrorHeader,
             '${Dao.inst.generalPreErrorMessage}  \n\n Error - $errorBody  \n\n${Dao.inst.generalPostErrorMessage}')
         : print(
             '${Dao.inst.generalPreErrorMessage}  \n\n Error - $errorBody  \n\n${Dao.inst.generalPostErrorMessage}');
@@ -64,15 +64,14 @@ class LiquidSoftService {
 
   throwHTTPError(String resStatusCode, String resBody) {
     Dao.inst.isDebug == true
-        ? openDialog(Dao.inst.globalNavigatorKey.currentContext, Dao.inst.httpErrorHeader,
+        ? openDialog(Dao.inst.httpErrorHeader,
             '${Dao.inst.httpPreErrorMessage}  \n\n Error Code - $resStatusCode \n\n Error - $resBody  \n\n${Dao.inst.httpPostErrorMessage}')
         : print(
             '${Dao.inst.httpPreErrorMessage}  \n\n Error Code - $resStatusCode \n\n Error - $resBody  \n\n${Dao.inst.httpPostErrorMessage}');
   }
 
   throwConnectivityError() {
-    openDialog(Dao.inst.globalNavigatorKey.currentContext, Dao.inst.connectivityErrorHeader,
-        Dao.inst.connectivityErrorMessage);
+    openDialog(Dao.inst.connectivityErrorHeader, Dao.inst.connectivityErrorMessage);
   }
 
   routePage(context, Widget route) {
@@ -95,9 +94,9 @@ class LiquidSoftService {
           );
   }
 
-  showSnackBar(BuildContext context, String comment) {
+  showSnackBar(String comment) {
     final snackBar = SnackBar(content: Text(comment));
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    ScaffoldMessenger.of(Dao.inst.globalNavigatorKey.currentContext).showSnackBar(snackBar);
   }
 
   String getDollarFormat(double dollarString) {
@@ -113,10 +112,10 @@ class LiquidSoftService {
     return f.format(numberString);
   }
 
-  approvalDialog(BuildContext context, String title, String text, String approveButtonText,
-      String denyButtonText, Function successCallback) async {
+  approvalDialog(String title, String text, String approveButtonText, String denyButtonText,
+      Function successCallback) async {
     final result = await showDialog(
-      context: context,
+      context: Dao.inst.globalNavigatorKey.currentContext,
       builder: (context) => LiquidApproveDialog(
         title: title,
         text: text,
@@ -130,10 +129,10 @@ class LiquidSoftService {
     }
   }
 
-  openDialog(BuildContext context, String title, String text, {int numPops = 1}) {
+  openDialog(String title, String text, {int numPops = 1}) {
     if (getPlatformType == PlatformType.iOS) {
       showDialog(
-        context: context,
+        context: Dao.inst.globalNavigatorKey.currentContext,
         builder: (BuildContext context) {
           // set up the AlertDialog
           return CupertinoAlertDialog(
@@ -175,7 +174,7 @@ class LiquidSoftService {
     } else {
       // show the dialog
       showDialog(
-        context: context,
+        context: Dao.inst.globalNavigatorKey.currentContext,
         builder: (BuildContext context) {
           // set up the AlertDialog
           return AlertDialog(

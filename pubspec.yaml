@@ -1,6 +1,6 @@
 name: liquidsoft_components
 description: A lightweight but complete flutter component package with Cupertino/Material Widgets,Global Error Handling, HTTP Caller, Platform Identification, and much more.
-version: 0.6.0
+version: 0.7.0
 homepage: https://github.com/cwesterhold/liquidsoft_components
 
 environment:

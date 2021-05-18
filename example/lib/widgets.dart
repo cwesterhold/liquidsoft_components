@@ -21,37 +21,10 @@ class _WidgetsScreenState extends State<WidgetsScreen> {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 18.0),
-            child:
-                Text('Here are examples of all of the widgets in the library'),
+            padding: const EdgeInsets.only(top: 18.0, bottom: 8),
+            child: Text('Here are examples of all of the widgets in the library'),
           ),
-          Divider(),
           Text('The App Bar and Bottom Nav Bar are LiquidScaffold'),
-          LiquidHeader(labelText: 'Liquid Logo'),
-          LiquidLogo(),
-          LiquidHeader(labelText: 'Liquid Spinner'),
-          LiquidSmallButton(
-            name: 'Route to Spinner Page',
-            onPressed: () {
-              _liquidSoftService.routePage(context, SpinnerPage());
-            },
-          ),
-          LiquidHeader(labelText: 'Liquid Button'),
-          LiquidButton(
-            name: 'Open Dialog',
-            onPressed: () {
-              _liquidSoftService.openDialog(context, 'Liquid Dialog',
-                  'This opened a dialog based on the platform');
-            },
-          ),
-          LiquidHeader(labelText: 'Liquid Small Button'),
-          LiquidSmallButton(
-            name: 'Small Button',
-            onPressed: () {
-              _liquidSoftService.openDialog(context, 'Liquid Dialog',
-                  'This opened a dialog based on the platform');
-            },
-          ),
           LiquidHeader(labelText: 'Liquid Date Picker'),
           LiquidDate(
             fieldName: 'Expense Date',
@@ -63,8 +36,7 @@ class _WidgetsScreenState extends State<WidgetsScreen> {
 
               if (val == null) {
                 returnVal = 'Date must not be null';
-              } else if (DateTime.parse(val).difference(DateTime.now()).inDays <
-                  0) {
+              } else if (DateTime.parse(val).difference(DateTime.now()).inDays < 0) {
                 returnVal = 'Date Must be today or after';
               } else {
                 returnVal = null;
@@ -86,13 +58,7 @@ class _WidgetsScreenState extends State<WidgetsScreen> {
             labelText: 'Expense Frequency',
             fieldWidth: MediaQuery.of(context).size.width * .85,
             initValue: 'Weekly',
-            values: [
-              'Weekly',
-              'Every other Week',
-              'Monthly',
-              'Quarterly',
-              'Yearly'
-            ],
+            values: ['Weekly', 'Every other Week', 'Monthly', 'Quarterly', 'Yearly'],
             onChanged: (val) {
               print(val);
             },
@@ -119,29 +85,46 @@ class _WidgetsScreenState extends State<WidgetsScreen> {
             },
           ),
           LiquidHeader(labelText: 'Liquid Text'),
+          LiquidText(
+            fieldName: 'Expense Frequency Amount',
+            labelText: 'Expense Frequency Amount',
+            fieldWidth: MediaQuery.of(context).size.width * .85,
+            keyboardType: TextInputType.number,
+            isEdit: true,
+            validator: (val) {
+              if (val == null) {
+                return "Expense Frequency Amount cannot be empty";
+              } else if (double.parse(val.replaceAll(",", "")) == 0) {
+                return "Please enter a valid number";
+              } else {
+                return null;
+              }
+            },
+            controller: expenseAmountController,
+            onChanged: (newVal) {
+              print(newVal);
+            },
+            onSaved: (newVal) {
+              print(newVal);
+            },
+          ),
+          LiquidHeader(labelText: 'Liquid Logo'),
+          LiquidLogo(),
+          LiquidHeader(labelText: 'Liquid Spinner'),
+          LiquidButton(
+            name: 'Route to Spinner Page',
+            onPressed: () {
+              _liquidSoftService.routePage(context, SpinnerPage());
+            },
+          ),
+          LiquidHeader(labelText: 'Liquid Button'),
           Padding(
             padding: const EdgeInsets.only(bottom: 68.0),
-            child: LiquidText(
-              fieldName: 'Expense Frequency Amount',
-              labelText: 'Expense Frequency Amount',
-              fieldWidth: MediaQuery.of(context).size.width * .85,
-              keyboardType: TextInputType.number,
-              isEdit: true,
-              validator: (val) {
-                if (val == null) {
-                  return "Expense Frequency Amount cannot be empty";
-                } else if (double.parse(val.replaceAll(",", "")) == 0) {
-                  return "Please enter a valid number";
-                } else {
-                  return null;
-                }
-              },
-              controller: expenseAmountController,
-              onChanged: (newVal) {
-                print(newVal);
-              },
-              onSaved: (newVal) {
-                print(newVal);
+            child: LiquidButton(
+              name: 'Open Dialog',
+              onPressed: () {
+                _liquidSoftService.openDialog(
+                    'Liquid Dialog', 'This opened a dialog based on the platform');
               },
             ),
           ),

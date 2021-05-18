@@ -43,22 +43,25 @@ class LiquidButton extends StatelessWidget {
     LiquidSoftService _liquidService = LiquidSoftService();
 
     return _liquidService.getPlatformType == PlatformType.iOS
-        ? CupertinoButton(
-            key: key,
-            onPressed: onPressed,
-            minSize: width / 2,
-            color: backgroundColor,
-            child: Text(
-              name,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: fontSize,
-                fontFamily: 'Comfortaa',
+        ? Padding(
+            padding: const EdgeInsets.only(top: 8, bottom: 8),
+            child: CupertinoButton(
+              key: key,
+              onPressed: onPressed,
+              minSize: width / 2,
+              color: backgroundColor == null ? Colors.blueAccent : backgroundColor,
+              child: Text(
+                name,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: fontSize,
+                  fontFamily: 'Comfortaa',
+                ),
               ),
             ),
           )
         : Padding(
-            padding: const EdgeInsets.only(top: 10.0),
+            padding: const EdgeInsets.only(top: 8, bottom: 8),
             child: ButtonTheme(
               minWidth: width,
               height: height,

@@ -20,7 +20,6 @@ class _SecondaryPageState extends State<SecondaryPage> {
           trailing: GestureDetector(
             onTap: () {
               _liquidSoftService.approvalDialog(
-                context,
                 'Approval Dialog',
                 'Please approve this ask',
                 'Approve',
@@ -43,8 +42,7 @@ class _SecondaryPageState extends State<SecondaryPage> {
               Text(
                   ' This is a secondary page.  Use the LiquidSecondaryAppBar widget to get the appbar above.'),
               Divider(),
-              Text(
-                  'Click on the delete icon in the appBar to get an approval dialog')
+              Text('Click on the delete icon in the appBar to get an approval dialog')
             ],
           ),
         ),
