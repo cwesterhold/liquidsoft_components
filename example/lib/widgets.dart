@@ -22,7 +22,8 @@ class _WidgetsScreenState extends State<WidgetsScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 18.0, bottom: 8),
-            child: Text('Here are examples of all of the widgets in the library'),
+            child:
+                Text('Here are examples of all of the widgets in the library'),
           ),
           Text('The App Bar and Bottom Nav Bar are LiquidScaffold'),
           LiquidHeader(labelText: 'Liquid Date Picker'),
@@ -36,7 +37,8 @@ class _WidgetsScreenState extends State<WidgetsScreen> {
 
               if (val == null) {
                 returnVal = 'Date must not be null';
-              } else if (DateTime.parse(val).difference(DateTime.now()).inDays < 0) {
+              } else if (DateTime.parse(val).difference(DateTime.now()).inDays <
+                  0) {
                 returnVal = 'Date Must be today or after';
               } else {
                 returnVal = null;
@@ -58,7 +60,13 @@ class _WidgetsScreenState extends State<WidgetsScreen> {
             labelText: 'Expense Frequency',
             fieldWidth: MediaQuery.of(context).size.width * .85,
             initValue: 'Weekly',
-            values: ['Weekly', 'Every other Week', 'Monthly', 'Quarterly', 'Yearly'],
+            values: [
+              'Weekly',
+              'Every other Week',
+              'Monthly',
+              'Quarterly',
+              'Yearly'
+            ],
             onChanged: (val) {
               print(val);
             },
@@ -123,8 +131,8 @@ class _WidgetsScreenState extends State<WidgetsScreen> {
             child: LiquidButton(
               name: 'Open Dialog',
               onPressed: () {
-                _liquidSoftService.openDialog(
-                    'Liquid Dialog', 'This opened a dialog based on the platform');
+                _liquidSoftService.openDialog('Liquid Dialog',
+                    'This opened a dialog based on the platform');
               },
             ),
           ),

@@ -22,7 +22,8 @@ class LiquidSoftService {
     return Dao.inst.globalNavigatorKey;
   }
 
-  sendMail(String contactEmail, String contactName, String subject, String message) async {
+  sendMail(String contactEmail, String contactName, String subject,
+      String message) async {
     LiquidHTTPCaller _httpCaller = LiquidHTTPCaller();
 
     _httpCaller.postData('https://api.liquidsoft.io/SendGrid/', {
@@ -71,7 +72,8 @@ class LiquidSoftService {
   }
 
   throwConnectivityError() {
-    openDialog(Dao.inst.connectivityErrorHeader, Dao.inst.connectivityErrorMessage);
+    openDialog(
+        Dao.inst.connectivityErrorHeader, Dao.inst.connectivityErrorMessage);
   }
 
   routePage(context, Widget route) {
@@ -96,7 +98,8 @@ class LiquidSoftService {
 
   showSnackBar(String comment) {
     final snackBar = SnackBar(content: Text(comment));
-    ScaffoldMessenger.of(Dao.inst.globalNavigatorKey.currentContext).showSnackBar(snackBar);
+    ScaffoldMessenger.of(Dao.inst.globalNavigatorKey.currentContext)
+        .showSnackBar(snackBar);
   }
 
   String getDollarFormat(double dollarString) {
@@ -106,14 +109,15 @@ class LiquidSoftService {
     return '\$${dollarString.toStringAsFixed(2).replaceAllMapped(reg, mathFunc)}';
   }
 
-  String numberFormat(double numberString, {String format = "###.0#", String locale = 'en_US'}) {
+  String numberFormat(double numberString,
+      {String format = "###.0#", String locale = 'en_US'}) {
     var f = NumberFormat(format, locale);
 
     return f.format(numberString);
   }
 
-  approvalDialog(String title, String text, String approveButtonText, String denyButtonText,
-      Function successCallback) async {
+  approvalDialog(String title, String text, String approveButtonText,
+      String denyButtonText, Function successCallback) async {
     final result = await showDialog(
       context: Dao.inst.globalNavigatorKey.currentContext,
       builder: (context) => LiquidApproveDialog(

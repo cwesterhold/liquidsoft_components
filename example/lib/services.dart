@@ -19,7 +19,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 18.0, bottom: 8),
-            child: Text('Here are examples of all of the widgets in the library'),
+            child:
+                Text('Here are examples of all of the widgets in the library'),
           ),
           LiquidHeader(labelText: 'Liquid Errors'),
           Text(
@@ -27,7 +28,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
           LiquidButton(
             name: 'HTTP Error',
             onPressed: () {
-              _liquidSoftService.throwHTTPError('500', 'something didnt go right...');
+              _liquidSoftService.throwHTTPError(
+                  '500', 'something didnt go right...');
             },
           ),
           LiquidButton(
@@ -39,7 +41,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
           LiquidButton(
             name: 'Throw General Error',
             onPressed: () {
-              return Future.error("This is the error", StackTrace.fromString("This is its trace"));
+              return Future.error("This is the error",
+                  StackTrace.fromString("This is its trace"));
             },
           ),
           LiquidHeader(labelText: 'Liquid Routing'),
@@ -54,8 +57,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
             name: 'Open SnackBar',
             onPressed: () {
               _liquidSoftService.showSnackBar('This is a liquid snackbar');
-              _liquidSoftService.openDialog(
-                  'Liquid Dialog', 'This opened a dialog based on the platform');
+              _liquidSoftService.openDialog('Liquid Dialog',
+                  'This opened a dialog based on the platform');
             },
           ),
           LiquidHeader(labelText: 'Liquid Dollar Formatting'),
@@ -85,8 +88,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
             child: LiquidButton(
               name: 'Open Dialog',
               onPressed: () {
-                _liquidSoftService.openDialog(
-                    'Liquid Dialog', 'This opened a dialog based on the platform');
+                _liquidSoftService.openDialog('Liquid Dialog',
+                    'This opened a dialog based on the platform');
               },
             ),
           )

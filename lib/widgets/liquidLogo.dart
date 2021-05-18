@@ -17,8 +17,8 @@ class _LiquidLogoState extends State<LiquidLogo> {
   @override
   Widget build(BuildContext context) {
     return Dao.inst.logoLocationLight == null
-        ? _liquidService.openDialog(
-            'Component Error', 'Logos where not initialized so this widget will not work.')
+        ? _liquidService.openDialog('Component Error',
+            'Logos where not initialized so this widget will not work.')
         : ConstrainedBox(
             constraints: BoxConstraints(maxWidth: 230),
             child: Image.asset(

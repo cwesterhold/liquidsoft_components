@@ -49,7 +49,8 @@ class LiquidButton extends StatelessWidget {
               key: key,
               onPressed: onPressed,
               minSize: width / 2,
-              color: backgroundColor == null ? Colors.blueAccent : backgroundColor,
+              color:
+                  backgroundColor == null ? Colors.blueAccent : backgroundColor,
               child: Text(
                 name,
                 style: TextStyle(

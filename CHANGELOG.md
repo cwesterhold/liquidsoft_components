@@ -1,3 +1,7 @@
+## 0.8.0
+* Bug Fixes from Testing
+* Example Improvement
+
 ## 0.7.0
 * add Global Error Handling Web support
 * Bug Fixes
