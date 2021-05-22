@@ -100,6 +100,7 @@ class _LiquidTextState extends State<LiquidText> {
                   ),
                 ),
                 child: CupertinoTextField(
+                  textAlign: TextAlign.right,
                   decoration: BoxDecoration(color: Colors.transparent),
                   key: widget.key,
                   enabled: widget.isEdit ? true : false,
@@ -114,7 +115,7 @@ class _LiquidTextState extends State<LiquidText> {
                   onTap: widget.onTap,
                   keyboardType: widget.keyboardType,
                   style: new TextStyle(
-                    fontFamily: "Comfortaa",
+                    fontFamily: 'San Francisco',
                   ),
                 ),
               ),
