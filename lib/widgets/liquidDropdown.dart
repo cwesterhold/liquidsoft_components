@@ -106,90 +106,96 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
     return Padding(
       padding: const EdgeInsets.only(top: 18.0),
       child: _liquidService.getPlatformType == PlatformType.iOS
-          ? CupertinoFormRow(
-              prefix: Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Text(
-                  widget.labelText,
-                  style: TextStyle(fontSize: 17, fontFamily: 'San Francisco'),
-                ),
-              ),
-              child: CupertinoTextField(
-                key: widget.key,
-                enabled: _isEdit ? true : false,
-                readOnly: _isEdit ? false : true,
-                focusNode: AlwaysDisabledFocusNode(),
-                style: TextStyle(
-                  fontFamily: "Comfortaa",
-                ),
-                onSubmitted: _onSaved,
-                onChanged: _onChanged,
-                controller: cupDropController,
-                onTap: () async {
-                  setState(() {
-                    _initValIndex = _values.indexOf(_dropVal);
-                  });
+          ? CupertinoFormSection(
+              backgroundColor: Colors.white,
+              children: [
+                CupertinoFormRow(
+                  prefix: Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Text(
+                      widget.labelText,
+                      style: TextStyle(
+                          fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
+                    ),
+                  ),
+                  child: CupertinoTextField(
+                    key: widget.key,
+                    enabled: _isEdit ? true : false,
+                    readOnly: _isEdit ? false : true,
+                    focusNode: AlwaysDisabledFocusNode(),
+                    style: TextStyle(
+                      fontFamily: "Comfortaa",
+                    ),
+                    onSubmitted: _onSaved,
+                    onChanged: _onChanged,
+                    controller: cupDropController,
+                    onTap: () async {
+                      setState(() {
+                        _initValIndex = _values.indexOf(_dropVal);
+                      });
 
-                  var t = await showModalBottomSheet(
-                    context: context,
-                    builder: (context) {
-                      String? tempText;
-                      return Container(
-                        height: 250,
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  CupertinoButton(
-                                    child: Text('Cancel'),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
+                      var t = await showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          String? tempText;
+                          return Container(
+                            height: 250,
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      CupertinoButton(
+                                        child: Text('Cancel'),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                      CupertinoButton(
+                                        child: Text('Done'),
+                                        onPressed: () {
+                                          Navigator.of(context).pop(tempText);
+                                        },
+                                      ),
+                                    ],
                                   ),
-                                  CupertinoButton(
-                                    child: Text('Done'),
-                                    onPressed: () {
-                                      Navigator.of(context).pop(tempText);
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Divider(
-                              height: 0,
-                              thickness: 1,
-                            ),
-                            Expanded(
-                              child: Container(
-                                child: CupertinoPicker(
-                                  backgroundColor: Colors.white,
-                                  itemExtent: 40,
-                                  looping: false,
-                                  scrollController:
-                                      FixedExtentScrollController(initialItem: _initValIndex),
-                                  children: _values
-                                      .map(
-                                        (e) => Text(e),
-                                      )
-                                      .toList(),
-                                  onSelectedItemChanged: (val) {
-                                    tempText = _values[val];
-                                  },
                                 ),
-                              ),
+                                Divider(
+                                  height: 0,
+                                  thickness: 1,
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    child: CupertinoPicker(
+                                      backgroundColor: Colors.white,
+                                      itemExtent: 40,
+                                      looping: false,
+                                      scrollController:
+                                          FixedExtentScrollController(initialItem: _initValIndex),
+                                      children: _values
+                                          .map(
+                                            (e) => Text(e),
+                                          )
+                                          .toList(),
+                                      onSelectedItemChanged: (val) {
+                                        tempText = _values[val];
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          );
+                        },
                       );
-                    },
-                  );
 
-                  cupDropController.text = t;
-                  _dropVal = t;
-                },
-              ),
+                      cupDropController.text = t;
+                      _dropVal = t;
+                    },
+                  ),
+                ),
+              ],
             )
           : Container(
               width: _fieldWidth,

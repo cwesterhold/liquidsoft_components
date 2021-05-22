@@ -55,79 +55,85 @@ class LiquidDate extends StatelessWidget {
     LiquidSoftService _liquidService = LiquidSoftService();
 
     return _liquidService.getPlatformType == PlatformType.iOS
-        ? CupertinoFormRow(
-            prefix: Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: Text(
-                labelText,
-                style: TextStyle(fontSize: 17, fontFamily: 'San Francisco'),
-              ),
-            ),
-            child: CupertinoTextField(
-              key: key,
-              enabled: isEdit ? true : false,
-              readOnly: isEdit ? false : true,
-              placeholder: labelText,
-              style: TextStyle(
-                fontFamily: "Comfortaa",
-              ),
-              //validator: validator,
-              controller: controller,
-              onSubmitted: onSaved,
-              onChanged: onChanged,
-              onTap: () async {
-                DateTime? date = DateTime(2020);
-                FocusScope.of(context).requestFocus(new FocusNode());
+        ? CupertinoFormSection(
+            backgroundColor: Colors.white,
+            children: [
+              CupertinoFormRow(
+                prefix: Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Text(
+                    labelText,
+                    style:
+                        TextStyle(fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
+                  ),
+                ),
+                child: CupertinoTextField(
+                  key: key,
+                  enabled: isEdit ? true : false,
+                  readOnly: isEdit ? false : true,
+                  placeholder: labelText,
+                  style: TextStyle(
+                    fontFamily: "Comfortaa",
+                  ),
+                  //validator: validator,
+                  controller: controller,
+                  onSubmitted: onSaved,
+                  onChanged: onChanged,
+                  onTap: () async {
+                    DateTime? date = DateTime(2020);
+                    FocusScope.of(context).requestFocus(new FocusNode());
 
-                date = await showModalBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    DateTime? tempPickedDate;
-                    return Container(
-                      height: 250,
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                CupertinoButton(
-                                  child: Text('Cancel'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
+                    date = await showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        DateTime? tempPickedDate;
+                        return Container(
+                          height: 250,
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    CupertinoButton(
+                                      child: Text('Cancel'),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                    CupertinoButton(
+                                      child: Text('Done'),
+                                      onPressed: () {
+                                        Navigator.of(context).pop(tempPickedDate);
+                                      },
+                                    ),
+                                  ],
                                 ),
-                                CupertinoButton(
-                                  child: Text('Done'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop(tempPickedDate);
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                          Divider(
-                            height: 0,
-                            thickness: 1,
-                          ),
-                          Expanded(
-                            child: Container(
-                              child: CupertinoDatePicker(
-                                mode: CupertinoDatePickerMode.date,
-                                onDateTimeChanged: (DateTime dateTime) {
-                                  tempPickedDate = dateTime;
-                                },
                               ),
-                            ),
+                              Divider(
+                                height: 0,
+                                thickness: 1,
+                              ),
+                              Expanded(
+                                child: Container(
+                                  child: CupertinoDatePicker(
+                                    mode: CupertinoDatePickerMode.date,
+                                    onDateTimeChanged: (DateTime dateTime) {
+                                      tempPickedDate = dateTime;
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        );
+                      },
                     );
+                    if (date != null) controller.text = DateFormat('yyyy-MM-dd').format(date);
                   },
-                );
-                if (date != null) controller.text = DateFormat('yyyy-MM-dd').format(date);
-              },
-            ),
+                ),
+              ),
+            ],
           )
         : Padding(
             padding: const EdgeInsets.only(top: 18.0),

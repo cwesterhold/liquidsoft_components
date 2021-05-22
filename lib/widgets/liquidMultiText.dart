@@ -74,30 +74,36 @@ class _LiquidMultiTextState extends State<LiquidMultiText> {
     return Padding(
       padding: const EdgeInsets.only(top: 18.0),
       child: _liquidService.getPlatformType == PlatformType.iOS
-          ? CupertinoFormRow(
-              prefix: Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Text(
-                  widget.labelText,
-                  style: TextStyle(fontSize: 17, fontFamily: 'San Francisco'),
+          ? CupertinoFormSection(
+              backgroundColor: Colors.white,
+              children: [
+                CupertinoFormRow(
+                  prefix: Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Text(
+                      widget.labelText,
+                      style: TextStyle(
+                          fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
+                    ),
+                  ),
+                  child: CupertinoTextField(
+                    key: widget.key,
+                    enabled: widget.isEdit ? true : false,
+                    readOnly: widget.isEdit ? false : true,
+                    keyboardType: widget.keyboardType,
+                    maxLines: widget.maxLines,
+                    placeholder: widget.labelText,
+                    //validator: widget.validator,
+                    controller: widget.controller,
+                    onSubmitted: widget.onSaved,
+                    onChanged: widget.onChanged,
+                    onTap: widget.onTap,
+                    style: new TextStyle(
+                      fontFamily: "Comfortaa",
+                    ),
+                  ),
                 ),
-              ),
-              child: CupertinoTextField(
-                key: widget.key,
-                enabled: widget.isEdit ? true : false,
-                readOnly: widget.isEdit ? false : true,
-                keyboardType: widget.keyboardType,
-                maxLines: widget.maxLines,
-                placeholder: widget.labelText,
-                //validator: widget.validator,
-                controller: widget.controller,
-                onSubmitted: widget.onSaved,
-                onChanged: widget.onChanged,
-                onTap: widget.onTap,
-                style: new TextStyle(
-                  fontFamily: "Comfortaa",
-                ),
-              ),
+              ],
             )
           : Container(
               width: widget.fieldWidth,

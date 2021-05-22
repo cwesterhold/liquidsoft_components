@@ -88,31 +88,38 @@ class _LiquidTextState extends State<LiquidText> {
     return Padding(
       padding: const EdgeInsets.only(top: 18.0),
       child: _liquidService.getPlatformType == PlatformType.iOS
-          ? CupertinoFormRow(
-              prefix: Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Text(
-                  widget.labelText,
-                  style: TextStyle(fontSize: 17, fontFamily: 'San Francisco'),
+          ? CupertinoFormSection(
+              backgroundColor: Colors.white,
+              children: [
+                CupertinoFormRow(
+                  prefix: Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Text(
+                      widget.labelText,
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
+                    ),
+                  ),
+                  child: CupertinoTextField(
+                    key: widget.key,
+                    enabled: widget.isEdit ? true : false,
+                    readOnly: widget.isEdit ? false : true,
+                    suffix: widget.suffixIcon,
+                    prefix: widget.prefixIcon,
+                    placeholder: widget.labelText,
+                    focusNode: widget.focusNode,
+                    controller: widget.controller,
+                    onSubmitted: widget.onSaved,
+                    onChanged: widget.onChanged,
+                    onTap: widget.onTap,
+                    keyboardType: widget.keyboardType,
+                    style: new TextStyle(
+                      fontFamily: "Comfortaa",
+                    ),
+                  ),
                 ),
-              ),
-              child: CupertinoTextField(
-                key: widget.key,
-                enabled: widget.isEdit ? true : false,
-                readOnly: widget.isEdit ? false : true,
-                suffix: widget.suffixIcon,
-                prefix: widget.prefixIcon,
-                placeholder: widget.labelText,
-                focusNode: widget.focusNode,
-                controller: widget.controller,
-                onSubmitted: widget.onSaved,
-                onChanged: widget.onChanged,
-                onTap: widget.onTap,
-                keyboardType: widget.keyboardType,
-                style: new TextStyle(
-                  fontFamily: "Comfortaa",
-                ),
-              ),
+              ],
             )
           : Container(
               width: widget.fieldWidth,
