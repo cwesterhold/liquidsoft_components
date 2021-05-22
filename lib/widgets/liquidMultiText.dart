@@ -98,9 +98,8 @@ class _LiquidMultiTextState extends State<LiquidMultiText> {
                   onSubmitted: widget.onSaved,
                   onChanged: widget.onChanged,
                   onTap: widget.onTap,
-                  style: new TextStyle(
-                    fontFamily: 'San Francisco',
-                  ),
+                  style:
+                      TextStyle(fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
                 ),
               ),
             ],

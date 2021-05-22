@@ -114,9 +114,8 @@ class _LiquidTextState extends State<LiquidText> {
                   onChanged: widget.onChanged,
                   onTap: widget.onTap,
                   keyboardType: widget.keyboardType,
-                  style: new TextStyle(
-                    fontFamily: 'San Francisco',
-                  ),
+                  style:
+                      TextStyle(fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
                 ),
               ),
             ],
