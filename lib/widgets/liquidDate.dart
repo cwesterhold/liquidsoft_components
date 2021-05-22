@@ -68,12 +68,18 @@ class LiquidDate extends StatelessWidget {
                   ),
                 ),
                 child: CupertinoTextField(
+                  decoration: BoxDecoration(color: Colors.transparent),
+                  textAlign: TextAlign.right,
                   key: key,
                   enabled: isEdit ? true : false,
                   readOnly: isEdit ? false : true,
                   placeholder: labelText,
-                  style: TextStyle(
-                    fontFamily: "Comfortaa",
+                  style:
+                      TextStyle(fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
+                  suffix: Icon(
+                    Icons.chevron_right,
+                    color: Colors.black54,
+                    size: 30,
                   ),
                   //validator: validator,
                   controller: controller,

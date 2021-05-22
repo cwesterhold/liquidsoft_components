@@ -51,43 +51,42 @@ class _LiquidSwitchState extends State<LiquidSwitch> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 8.0),
-      child: _liquidService.getPlatformType == PlatformType.iOS
-          ? CupertinoFormSection(
-              backgroundColor: Colors.white,
-              children: [
-                CupertinoFormRow(
-                  prefix: Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Text(
-                      widget.labelText,
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
-                    ),
-                  ),
-                  child: CupertinoSwitch(
-                    value: _switchValue,
-                    onChanged: (val) {
-                      setState(
-                        () {
-                          _switchValue = val;
-                          widget.onChanged(val);
-                        },
-                      );
-                    },
-                    trackColor: widget.trackColor == null
-                        ? Theme.of(context).accentColor
-                        : widget.trackColor,
-                    activeColor: widget.activeColor == null
-                        ? Theme.of(context).primaryColor
-                        : widget.activeColor,
+    return _liquidService.getPlatformType == PlatformType.iOS
+        ? CupertinoFormSection(
+            backgroundColor: Colors.white,
+            children: [
+              CupertinoFormRow(
+                prefix: Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Text(
+                    widget.labelText,
+                    textAlign: TextAlign.left,
+                    style:
+                        TextStyle(fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
                   ),
                 ),
-              ],
-            )
-          : Container(
+                child: CupertinoSwitch(
+                  value: _switchValue,
+                  onChanged: (val) {
+                    setState(
+                      () {
+                        _switchValue = val;
+                        widget.onChanged(val);
+                      },
+                    );
+                  },
+                  trackColor:
+                      widget.trackColor == null ? Theme.of(context).accentColor : widget.trackColor,
+                  activeColor: widget.activeColor == null
+                      ? Theme.of(context).primaryColor
+                      : widget.activeColor,
+                ),
+              ),
+            ],
+          )
+        : Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Container(
               width: widget.fieldWidth,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -124,6 +123,6 @@ class _LiquidSwitchState extends State<LiquidSwitch> {
                 ],
               ),
             ),
-    );
+          );
   }
 }

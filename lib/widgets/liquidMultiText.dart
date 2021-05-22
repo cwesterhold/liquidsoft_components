@@ -87,6 +87,7 @@ class _LiquidMultiTextState extends State<LiquidMultiText> {
                     ),
                   ),
                   child: CupertinoTextField(
+                    decoration: BoxDecoration(color: Colors.transparent),
                     key: widget.key,
                     enabled: widget.isEdit ? true : false,
                     readOnly: widget.isEdit ? false : true,
