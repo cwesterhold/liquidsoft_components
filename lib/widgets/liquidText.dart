@@ -85,44 +85,44 @@ class _LiquidTextState extends State<LiquidText> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 18.0),
-      child: _liquidService.getPlatformType == PlatformType.iOS
-          ? CupertinoFormSection(
-              backgroundColor: Colors.white,
-              children: [
-                CupertinoFormRow(
-                  prefix: Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Text(
-                      widget.labelText,
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
-                    ),
-                  ),
-                  child: CupertinoTextField(
-                    decoration: BoxDecoration(color: Colors.transparent),
-                    key: widget.key,
-                    enabled: widget.isEdit ? true : false,
-                    readOnly: widget.isEdit ? false : true,
-                    suffix: widget.suffixIcon,
-                    prefix: widget.prefixIcon,
-                    placeholder: widget.labelText,
-                    focusNode: widget.focusNode,
-                    controller: widget.controller,
-                    onSubmitted: widget.onSaved,
-                    onChanged: widget.onChanged,
-                    onTap: widget.onTap,
-                    keyboardType: widget.keyboardType,
-                    style: new TextStyle(
-                      fontFamily: "Comfortaa",
-                    ),
+    return _liquidService.getPlatformType == PlatformType.iOS
+        ? CupertinoFormSection(
+            backgroundColor: Colors.white,
+            children: [
+              CupertinoFormRow(
+                prefix: Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Text(
+                    widget.labelText,
+                    textAlign: TextAlign.left,
+                    style:
+                        TextStyle(fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
                   ),
                 ),
-              ],
-            )
-          : Container(
+                child: CupertinoTextField(
+                  decoration: BoxDecoration(color: Colors.transparent),
+                  key: widget.key,
+                  enabled: widget.isEdit ? true : false,
+                  readOnly: widget.isEdit ? false : true,
+                  suffix: widget.suffixIcon,
+                  prefix: widget.prefixIcon,
+                  placeholder: widget.labelText,
+                  focusNode: widget.focusNode,
+                  controller: widget.controller,
+                  onSubmitted: widget.onSaved,
+                  onChanged: widget.onChanged,
+                  onTap: widget.onTap,
+                  keyboardType: widget.keyboardType,
+                  style: new TextStyle(
+                    fontFamily: "Comfortaa",
+                  ),
+                ),
+              ),
+            ],
+          )
+        : Padding(
+            padding: const EdgeInsets.only(top: 18.0),
+            child: Container(
               width: widget.fieldWidth,
               height: widget.fieldHeight,
               child: TextFormField(
@@ -148,6 +148,6 @@ class _LiquidTextState extends State<LiquidText> {
                 ),
               ),
             ),
-    );
+          );
   }
 }

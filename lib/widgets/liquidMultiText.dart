@@ -71,42 +71,42 @@ class _LiquidMultiTextState extends State<LiquidMultiText> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 18.0),
-      child: _liquidService.getPlatformType == PlatformType.iOS
-          ? CupertinoFormSection(
-              backgroundColor: Colors.white,
-              children: [
-                CupertinoFormRow(
-                  prefix: Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Text(
-                      widget.labelText,
-                      style: TextStyle(
-                          fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
-                    ),
-                  ),
-                  child: CupertinoTextField(
-                    decoration: BoxDecoration(color: Colors.transparent),
-                    key: widget.key,
-                    enabled: widget.isEdit ? true : false,
-                    readOnly: widget.isEdit ? false : true,
-                    keyboardType: widget.keyboardType,
-                    maxLines: widget.maxLines,
-                    placeholder: widget.labelText,
-                    //validator: widget.validator,
-                    controller: widget.controller,
-                    onSubmitted: widget.onSaved,
-                    onChanged: widget.onChanged,
-                    onTap: widget.onTap,
-                    style: new TextStyle(
-                      fontFamily: "Comfortaa",
-                    ),
+    return _liquidService.getPlatformType == PlatformType.iOS
+        ? CupertinoFormSection(
+            backgroundColor: Colors.white,
+            children: [
+              CupertinoFormRow(
+                prefix: Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Text(
+                    widget.labelText,
+                    style:
+                        TextStyle(fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
                   ),
                 ),
-              ],
-            )
-          : Container(
+                child: CupertinoTextField(
+                  decoration: BoxDecoration(color: Colors.transparent),
+                  key: widget.key,
+                  enabled: widget.isEdit ? true : false,
+                  readOnly: widget.isEdit ? false : true,
+                  keyboardType: widget.keyboardType,
+                  maxLines: widget.maxLines,
+                  placeholder: widget.labelText,
+                  //validator: widget.validator,
+                  controller: widget.controller,
+                  onSubmitted: widget.onSaved,
+                  onChanged: widget.onChanged,
+                  onTap: widget.onTap,
+                  style: new TextStyle(
+                    fontFamily: "Comfortaa",
+                  ),
+                ),
+              ),
+            ],
+          )
+        : Padding(
+            padding: const EdgeInsets.only(top: 18.0),
+            child: Container(
               width: widget.fieldWidth,
               child: TextFormField(
                 key: widget.key,
@@ -129,6 +129,6 @@ class _LiquidMultiTextState extends State<LiquidMultiText> {
                 ),
               ),
             ),
-    );
+          );
   }
 }
