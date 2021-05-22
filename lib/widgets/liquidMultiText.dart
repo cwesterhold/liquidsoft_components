@@ -1,8 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:liquidsoft_components/services/liquidServices.dart';
+import 'package:liquidsoft_components/services/platformInfo.dart';
 
-/// Returns a multi line text field
-
-class LiquidMultiText extends StatelessWidget {
+class LiquidMultiText extends StatefulWidget {
   /// unique field name
   final String fieldName;
 
@@ -40,6 +41,9 @@ class LiquidMultiText extends StatelessWidget {
   /// This can be very helpful if you are trying to open a date or time picker
   final Function()? onTap;
 
+  /// optional Border
+  final OutlineInputBorder? border;
+
   ///optional key
   final Key? key;
 
@@ -55,38 +59,69 @@ class LiquidMultiText extends StatelessWidget {
       this.onChanged,
       this.onTap,
       required this.isEdit,
+      this.border,
       this.key});
+
+  @override
+  _LiquidMultiTextState createState() => _LiquidMultiTextState();
+}
+
+class _LiquidMultiTextState extends State<LiquidMultiText> {
+  LiquidSoftService _liquidService = LiquidSoftService();
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 18.0),
-      child: Container(
-        width: fieldWidth,
-        child: TextFormField(
-          key: key,
-          enabled: isEdit ? true : false,
-          readOnly: isEdit ? false : true,
-          keyboardType: keyboardType,
-          maxLines: maxLines,
-          decoration: InputDecoration(
-            labelText: labelText,
-            fillColor: Colors.white,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15.0),
-              borderSide: BorderSide(),
+      child: _liquidService.getPlatformType == PlatformType.iOS
+          ? CupertinoFormRow(
+              prefix: Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Text(
+                  widget.labelText,
+                  style: TextStyle(fontSize: 17, fontFamily: 'San Francisco'),
+                ),
+              ),
+              child: CupertinoTextField(
+                key: widget.key,
+                enabled: widget.isEdit ? true : false,
+                readOnly: widget.isEdit ? false : true,
+                keyboardType: widget.keyboardType,
+                maxLines: widget.maxLines,
+                placeholder: widget.labelText,
+                //validator: widget.validator,
+                controller: widget.controller,
+                onSubmitted: widget.onSaved,
+                onChanged: widget.onChanged,
+                onTap: widget.onTap,
+                style: new TextStyle(
+                  fontFamily: "Comfortaa",
+                ),
+              ),
+            )
+          : Container(
+              width: widget.fieldWidth,
+              child: TextFormField(
+                key: widget.key,
+                enabled: widget.isEdit ? true : false,
+                readOnly: widget.isEdit ? false : true,
+                keyboardType: widget.keyboardType,
+                maxLines: widget.maxLines,
+                decoration: InputDecoration(
+                  labelText: widget.labelText,
+                  fillColor: Colors.white,
+                  border: widget.border,
+                ),
+                validator: widget.validator,
+                controller: widget.controller,
+                onSaved: widget.onSaved,
+                onChanged: widget.onChanged,
+                onTap: widget.onTap,
+                style: new TextStyle(
+                  fontFamily: "Comfortaa",
+                ),
+              ),
             ),
-          ),
-          validator: validator,
-          controller: controller,
-          onSaved: onSaved,
-          onChanged: onChanged,
-          onTap: onTap,
-          style: new TextStyle(
-            fontFamily: "Comfortaa",
-          ),
-        ),
-      ),
     );
   }
 }

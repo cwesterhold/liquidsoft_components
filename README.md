@@ -10,8 +10,8 @@ The images below show one of the main widgets, LiquidScaffold.
 
 LiquidScaffold - Creates the Bottom Navigation Bar, the top AppBar, and the action buttons based on platform.  The same code created both of the below layouts, one for iOS and the other for Android.  A user of your app will expect native layouts and actions, the LiquidSoft Component library makes this easy.
 
-![Screenshot_1615594687](https://liquidsoft.io/wp-content/uploads/2021/05/ComponentExampleIOS-522x1024.png)
-![Screenshot_1615594689](https://liquidsoft.io/wp-content/uploads/2021/05/compExampleAndroid-563x1024.png)
+![Screenshot_1615594687](https://liquidsoft.io/wp-content/uploads/2021/05/ComponentExampleIOS-153x300.png)
+![Screenshot_1615594689](https://liquidsoft.io/wp-content/uploads/2021/05/compExampleAndroid-165x300.png)
 
 Documentation: Find a complete set of documentation on our website - https://liquidsoft.io/flutter-components/
 
@@ -99,10 +99,12 @@ Documentation: Find a complete set of documentation on our website - https://liq
 - Toggle Bar
     - Horizontal tab interface capable of handing any number of inputs. 
     - Easily customize colors with an easy to use set of attributes.
-- Switch - Coming soon
+- Switch
     - Cupertino or Material Switch
     - customize colors and size
-- Search Bar - Coming Soon
+- Search Bar
+    - Cupertino or Material Seach Bar
+    
     
 
 Please check out each example for implementation details on each widget

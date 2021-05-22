@@ -1,3 +1,10 @@
+## 0.8.2
+* Add LiquidSwitch
+* Add LiquidSearch
+
+## 0.8.1
+* Update images on readme
+
 ## 0.8.0
 * Bug Fixes from Testing
 * Example Improvement

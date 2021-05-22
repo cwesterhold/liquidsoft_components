@@ -31,6 +31,9 @@ class LiquidDropdown extends StatefulWidget {
   /// [apples,oranges,pears]
   final List<String> values;
 
+  /// optional Border
+  final OutlineInputBorder? border;
+
   /// optional key
   final Key? key;
 
@@ -43,6 +46,7 @@ class LiquidDropdown extends StatefulWidget {
       this.onSaved,
       this.onChanged,
       required this.isEdit,
+      this.border,
       this.key});
 
   @override
@@ -101,25 +105,24 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 18.0),
-      child: Container(
-        width: _fieldWidth,
-        child: _liquidService.getPlatformType == PlatformType.iOS
-            ? TextFormField(
+      child: _liquidService.getPlatformType == PlatformType.iOS
+          ? CupertinoFormRow(
+              prefix: Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Text(
+                  widget.labelText,
+                  style: TextStyle(fontSize: 17, fontFamily: 'San Francisco'),
+                ),
+              ),
+              child: CupertinoTextField(
                 key: widget.key,
                 enabled: _isEdit ? true : false,
                 readOnly: _isEdit ? false : true,
-                decoration: InputDecoration(
-                  labelText: _labelText,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                ),
                 focusNode: AlwaysDisabledFocusNode(),
                 style: TextStyle(
                   fontFamily: "Comfortaa",
                 ),
-                onSaved: _onSaved,
+                onSubmitted: _onSaved,
                 onChanged: _onChanged,
                 controller: cupDropController,
                 onTap: () async {
@@ -137,8 +140,7 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
                           children: <Widget>[
                             Container(
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   CupertinoButton(
                                     child: Text('Cancel'),
@@ -165,8 +167,8 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
                                   backgroundColor: Colors.white,
                                   itemExtent: 40,
                                   looping: false,
-                                  scrollController: FixedExtentScrollController(
-                                      initialItem: _initValIndex),
+                                  scrollController:
+                                      FixedExtentScrollController(initialItem: _initValIndex),
                                   children: _values
                                       .map(
                                         (e) => Text(e),
@@ -187,8 +189,11 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
                   cupDropController.text = t;
                   _dropVal = t;
                 },
-              )
-            : DropdownButtonFormField(
+              ),
+            )
+          : Container(
+              width: _fieldWidth,
+              child: DropdownButtonFormField(
                 key: widget.key,
                 items: _getItems(),
                 onChanged: _onChanged,
@@ -197,12 +202,10 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
                 decoration: InputDecoration(
                   labelText: _labelText,
                   fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
+                  border: widget.border,
                 ),
               ),
-      ),
+            ),
     );
   }
 }
