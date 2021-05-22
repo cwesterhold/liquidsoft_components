@@ -84,7 +84,7 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
     cupDropController.text = _dropVal;
 
     cupDropController.addListener(() {
-      _onChanged(cupDropController.text);
+      if (cupDropController.text != '') _onChanged(cupDropController.text);
     });
   }
 
