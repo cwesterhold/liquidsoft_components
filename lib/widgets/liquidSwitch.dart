@@ -61,8 +61,10 @@ class _LiquidSwitchState extends State<LiquidSwitch> {
                   child: Text(
                     widget.labelText,
                     textAlign: TextAlign.left,
-                    style:
-                        TextStyle(fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
+                    style: TextStyle(
+                        fontSize: 17,
+                        fontFamily: 'San Francisco',
+                        color: Colors.black54),
                   ),
                 ),
                 child: CupertinoSwitch(
@@ -75,8 +77,9 @@ class _LiquidSwitchState extends State<LiquidSwitch> {
                       },
                     );
                   },
-                  trackColor:
-                      widget.trackColor == null ? Theme.of(context).accentColor : widget.trackColor,
+                  trackColor: widget.trackColor == null
+                      ? Theme.of(context).accentColor
+                      : widget.trackColor,
                   activeColor: widget.activeColor == null
                       ? Theme.of(context).primaryColor
                       : widget.activeColor,

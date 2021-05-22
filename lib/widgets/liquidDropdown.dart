@@ -112,8 +112,10 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
                   padding: const EdgeInsets.only(right: 8.0),
                   child: Text(
                     widget.labelText,
-                    style:
-                        TextStyle(fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
+                    style: TextStyle(
+                        fontSize: 17,
+                        fontFamily: 'San Francisco',
+                        color: Colors.black54),
                   ),
                 ),
                 child: CupertinoTextField(
@@ -123,8 +125,10 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
                   enabled: _isEdit ? true : false,
                   readOnly: _isEdit ? false : true,
                   focusNode: AlwaysDisabledFocusNode(),
-                  style:
-                      TextStyle(fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
+                  style: TextStyle(
+                      fontSize: 17,
+                      fontFamily: 'San Francisco',
+                      color: Colors.black54),
                   suffix: Icon(
                     Icons.chevron_right,
                     color: Colors.black54,
@@ -148,7 +152,8 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
                             children: <Widget>[
                               Container(
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
                                     CupertinoButton(
                                       child: Text('Cancel'),
@@ -176,7 +181,8 @@ class _LiquidDropdownState extends State<LiquidDropdown> {
                                     itemExtent: 40,
                                     looping: false,
                                     scrollController:
-                                        FixedExtentScrollController(initialItem: _initValIndex),
+                                        FixedExtentScrollController(
+                                            initialItem: _initValIndex),
                                     children: _values
                                         .map(
                                           (e) => Text(e),

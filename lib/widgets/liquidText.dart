@@ -95,8 +95,10 @@ class _LiquidTextState extends State<LiquidText> {
                   child: Text(
                     widget.labelText,
                     textAlign: TextAlign.left,
-                    style:
-                        TextStyle(fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
+                    style: TextStyle(
+                        fontSize: 17,
+                        fontFamily: 'San Francisco',
+                        color: Colors.black54),
                   ),
                 ),
                 child: CupertinoTextField(
@@ -114,8 +116,10 @@ class _LiquidTextState extends State<LiquidText> {
                   onChanged: widget.onChanged,
                   onTap: widget.onTap,
                   keyboardType: widget.keyboardType,
-                  style:
-                      TextStyle(fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
+                  style: TextStyle(
+                      fontSize: 17,
+                      fontFamily: 'San Francisco',
+                      color: Colors.black54),
                 ),
               ),
             ],

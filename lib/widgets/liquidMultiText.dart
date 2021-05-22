@@ -80,8 +80,10 @@ class _LiquidMultiTextState extends State<LiquidMultiText> {
                   padding: const EdgeInsets.only(right: 8.0),
                   child: Text(
                     widget.labelText,
-                    style:
-                        TextStyle(fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
+                    style: TextStyle(
+                        fontSize: 17,
+                        fontFamily: 'San Francisco',
+                        color: Colors.black54),
                   ),
                 ),
                 child: CupertinoTextField(
@@ -98,8 +100,10 @@ class _LiquidMultiTextState extends State<LiquidMultiText> {
                   onSubmitted: widget.onSaved,
                   onChanged: widget.onChanged,
                   onTap: widget.onTap,
-                  style:
-                      TextStyle(fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
+                  style: TextStyle(
+                      fontSize: 17,
+                      fontFamily: 'San Francisco',
+                      color: Colors.black54),
                 ),
               ),
             ],

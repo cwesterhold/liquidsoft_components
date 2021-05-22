@@ -1,6 +1,8 @@
 ## 0.8.2
 * Add LiquidSwitch
 * Add LiquidSearch
+* Update Cupertino layouts
+* Update Material Layouts
 
 ## 0.8.1
 * Update images on readme

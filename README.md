@@ -10,8 +10,8 @@ The images below show one of the main widgets, LiquidScaffold.
 
 LiquidScaffold - Creates the Bottom Navigation Bar, the top AppBar, and the action buttons based on platform.  The same code created both of the below layouts, one for iOS and the other for Android.  A user of your app will expect native layouts and actions, the LiquidSoft Component library makes this easy.
 
-![Screenshot_1615594687](https://liquidsoft.io/wp-content/uploads/2021/05/ComponentExampleIOS-153x300.png)
-![Screenshot_1615594689](https://liquidsoft.io/wp-content/uploads/2021/05/compExampleAndroid-165x300.png)
+![Screenshot_1615594687](https://liquidsoft.io/wp-content/uploads/2021/05/Simulator-Screen-Shot-iPhone-12-Pro-Max-2021-05-22-at-13.12.23-139x300.png)
+![Screenshot_1615594689](https://liquidsoft.io/wp-content/uploads/2021/05/Screenshot_1621707191-142x300.png)
 
 Documentation: Find a complete set of documentation on our website - https://liquidsoft.io/flutter-components/
 
@@ -103,7 +103,9 @@ Documentation: Find a complete set of documentation on our website - https://liq
     - Cupertino or Material Switch
     - customize colors and size
 - Search Bar
-    - Cupertino or Material Seach Bar
+    - Cupertino or Material Search Bar
+- Form Sections - Coming Soon
+    - Returns a Cupertino Form Section or Standard 
     
     
 

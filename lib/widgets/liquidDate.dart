@@ -63,8 +63,10 @@ class LiquidDate extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 8.0),
                   child: Text(
                     labelText,
-                    style:
-                        TextStyle(fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
+                    style: TextStyle(
+                        fontSize: 17,
+                        fontFamily: 'San Francisco',
+                        color: Colors.black54),
                   ),
                 ),
                 child: CupertinoTextField(
@@ -74,8 +76,10 @@ class LiquidDate extends StatelessWidget {
                   enabled: isEdit ? true : false,
                   readOnly: isEdit ? false : true,
                   placeholder: labelText,
-                  style:
-                      TextStyle(fontSize: 17, fontFamily: 'San Francisco', color: Colors.black54),
+                  style: TextStyle(
+                      fontSize: 17,
+                      fontFamily: 'San Francisco',
+                      color: Colors.black54),
                   suffix: Icon(
                     Icons.chevron_right,
                     color: Colors.black54,
@@ -99,7 +103,8 @@ class LiquidDate extends StatelessWidget {
                             children: <Widget>[
                               Container(
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
                                     CupertinoButton(
                                       child: Text('Cancel'),
@@ -110,7 +115,8 @@ class LiquidDate extends StatelessWidget {
                                     CupertinoButton(
                                       child: Text('Done'),
                                       onPressed: () {
-                                        Navigator.of(context).pop(tempPickedDate);
+                                        Navigator.of(context)
+                                            .pop(tempPickedDate);
                                       },
                                     ),
                                   ],
@@ -135,7 +141,8 @@ class LiquidDate extends StatelessWidget {
                         );
                       },
                     );
-                    if (date != null) controller.text = DateFormat('yyyy-MM-dd').format(date);
+                    if (date != null)
+                      controller.text = DateFormat('yyyy-MM-dd').format(date);
                   },
                 ),
               ),
@@ -167,12 +174,14 @@ class LiquidDate extends StatelessWidget {
 
                   date = await showDatePicker(
                     context: context,
-                    initialDate:
-                        controller.text == '' ? DateTime.now() : DateTime.parse(controller.text),
+                    initialDate: controller.text == ''
+                        ? DateTime.now()
+                        : DateTime.parse(controller.text),
                     firstDate: date,
                     lastDate: DateTime(2100),
                   );
-                  if (date != null) controller.text = DateFormat('yyyy-MM-dd').format(date);
+                  if (date != null)
+                    controller.text = DateFormat('yyyy-MM-dd').format(date);
                 },
               ),
             ),
