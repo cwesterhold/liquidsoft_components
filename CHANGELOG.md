@@ -1,3 +1,7 @@
+## 0.8.2+1
+
+- Migrated from the deprecated connectivity plugin to connectivity_plus.
+
 ## 0.8.2
 * Add LiquidSwitch
 * Add LiquidSearch
